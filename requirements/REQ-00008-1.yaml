@@ -1,0 +1,15 @@
+requirement:
+  id: REQ-00008-1
+  title: The formatter shall normalize member spacing and parameter separators
+  description: >
+    The formatter shall normalize member spacing and parameter separators
+  rationale: >
+    Visibility, modifiers, name, ' : type' and ', '-joined parameters with canonical spacing; free-text members are opaque payloads and stay verbatim.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+    - SREQ-00007-1
+  tags:
+    - members
+    - style

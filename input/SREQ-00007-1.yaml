@@ -1,0 +1,12 @@
+requirement:
+  id: SREQ-00007-1
+  title: The tool shall version its canonical style rules
+  description: >
+    The tool shall version its canonical style rules.
+  rationale: >
+    Every style rule (indentation width, future intra-line spacing) is an explicit, documented, versioned decision; style changes are breaking for downstream diffs and follow semver.
+  owner: dcoello-dev
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1

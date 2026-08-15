@@ -11,3 +11,4 @@ src/plantuml_fmt.egg-info/requires.txt
 src/plantuml_fmt.egg-info/top_level.txt
 tests/test_cli.py
 tests/test_formatter.py
+tests/test_hooks.py

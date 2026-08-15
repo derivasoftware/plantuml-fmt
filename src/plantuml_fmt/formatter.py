@@ -11,6 +11,8 @@ formatter lossless by construction and trivially idempotent.
 import tree_sitter_plantuml
 from tree_sitter import Language, Node, Parser
 
+from plantuml_fmt.rules import rewrite_member, rewrite_relation
+
 INDENT = b"  "
 
 # Braced blocks whose inner lines gain one indentation level.
@@ -50,10 +52,27 @@ def _indent_block(node: Node, depth: list[int]) -> None:
         depth[row] += 1
 
 
-def _collect(node: Node, depth: list[int], frozen: list[bool]) -> None:
+def _indent_frame(node: Node, depth: list[int]) -> None:
+    # frame bodies gain a level; else/end lines stay at frame depth
+    end_row = _child_row(node, "end")
+    if end_row is None:
+        end_row = node.end_point[0]
+    for row in range(node.start_point[0] + 1, end_row):
+        depth[row] += 1
+    for child in node.children:
+        if child.type == "else_clause":
+            depth[child.start_point[0]] -= 1
+
+
+def _collect(node: Node, depth: list[int], frozen: list[bool],
+             rewrites: dict[int, Node]) -> None:
     kind = node.type
     if kind in _BLOCKS:
         _indent_block(node, depth)
+    elif kind == "frame_block":
+        _indent_frame(node, depth)
+    elif kind in ("relation", "member"):
+        rewrites[node.start_point[0]] = node
     elif kind == "note_statement":
         end_row = _child_row(node, "end note")
         if end_row is not None:
@@ -67,7 +86,13 @@ def _collect(node: Node, depth: list[int], frozen: list[bool]) -> None:
         # leading whitespace is outside it and stays reindentable
         _freeze(frozen, node.start_point[0] + 1, node.end_point[0])
     for child in node.children:
-        _collect(child, depth, frozen)
+        _collect(child, depth, frozen, rewrites)
+
+
+def _rewrite(node: Node, src: bytes) -> bytes | None:
+    if node.type == "relation":
+        return rewrite_relation(src, node)
+    return rewrite_member(src, node)
 
 
 def format_bytes(src: bytes) -> bytes:
@@ -75,16 +100,24 @@ def format_bytes(src: bytes) -> bytes:
     lines = src.split(b"\n")
     depth = [0] * len(lines)
     frozen = [False] * len(lines)
-    _collect(tree.root_node, depth, frozen)
+    rewrites: dict[int, Node] = {}
+    _collect(tree.root_node, depth, frozen, rewrites)
 
     out = []
     for row, line in enumerate(lines):
         if frozen[row]:
             out.append(line)
-        elif not (stripped := line.lstrip(b" \t")):
+            continue
+        stripped = line.lstrip(b" \t")
+        if not stripped:
             out.append(b"")
-        else:
-            out.append(INDENT * depth[row] + stripped)
+            continue
+        node = rewrites.get(row)
+        if node is not None:
+            rebuilt = _rewrite(node, src)
+            if rebuilt is not None:
+                stripped = rebuilt
+        out.append(INDENT * depth[row] + stripped)
     return b"\n".join(out)
 
 

@@ -1,9 +1,0 @@
-verification:
-  id: VER-00003-1
-  req_id: REQ-00003-1
-  title: Property test compares per-line stripped content
-  description: >
-    Property test compares per-line stripped content
-  method: test
-  test_ids:
-    - tests/test_formatter.py::test_only_leading_whitespace_changes

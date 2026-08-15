@@ -1,0 +1,15 @@
+requirement:
+  id: REQ-00001-1
+  title: The formatter shall indent statements two spaces per enclosing block
+  description: >
+    The formatter shall indent statements two spaces per enclosing block
+  rationale: >
+    The first versioned style rule: two spaces per braced block, statements at column zero outside blocks.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+    - SREQ-00007-1
+  tags:
+    - indentation
+    - style

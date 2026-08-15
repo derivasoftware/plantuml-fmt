@@ -1,0 +1,12 @@
+requirement:
+  id: SREQ-00003-1
+  title: The formatter shall emit identical output when reformatting its own output
+  description: >
+    The formatter shall emit identical output when reformatting its own output.
+  rationale: >
+    Idempotency: fmt(fmt(x)) == fmt(x) for every input. A non-idempotent formatter oscillates in CI and erodes trust immediately.
+  owner: dcoello-dev
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1

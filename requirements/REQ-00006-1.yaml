@@ -1,0 +1,13 @@
+requirement:
+  id: REQ-00006-1
+  title: The repository shall expose the formatter as a pre-commit hook
+  description: >
+    The repository shall expose the formatter as a pre-commit hook
+  rationale: >
+    A .pre-commit-hooks.yaml at the root wired to the console script is the primary distribution channel.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00006-1
+  tags:
+    - pre-commit

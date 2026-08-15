@@ -1,0 +1,12 @@
+requirement:
+  id: SREQ-00004-1
+  title: The formatter shall pass opaque content through verbatim
+  description: >
+    The formatter shall pass opaque content through verbatim.
+  rationale: >
+    Note bodies, raw-block bodies (legend, header, footer, skinparam), block-comment continuations and raw frontier lines are opaque per the grammar contract (raw nodes) and must survive byte-identical, indentation included — PlantUML renders note text as-is.
+  owner: dcoello-dev
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1

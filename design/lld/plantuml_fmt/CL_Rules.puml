@@ -1,0 +1,21 @@
+@startuml CL_Rules
+' requirement REQ-00003-2
+' requirement REQ-00007-1
+' requirement REQ-00008-1
+
+!startsub Rules
+
+namespace plantuml_fmt.rules {
+  class "<<module>>" as RulesModule {
+    + rewrite_relation(src: bytes, node: Node) : bytes | None
+    + rewrite_member(src: bytes, node: Node) : bytes | None
+    - _rewrite_attribute(src: bytes, node: Node) : bytes | None
+    - _rewrite_method(src: bytes, node: Node) : bytes | None
+    - _single_line(node: Node) : bool
+    - _text(src: bytes, node: Node) : bytes
+  }
+}
+
+!endsub
+
+@enduml

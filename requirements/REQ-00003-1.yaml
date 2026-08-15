@@ -1,0 +1,13 @@
+requirement:
+  id: REQ-00003-1
+  title: The formatter shall change only leading whitespace of statement lines
+  description: >
+    The formatter shall change only leading whitespace of statement lines
+  rationale: >
+    Everything after the first non-whitespace byte of every line is untouchable in v0 — losslessness by construction.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00002-1
+  tags:
+    - losslessness

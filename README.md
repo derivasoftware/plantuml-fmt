@@ -8,10 +8,11 @@ Each tool consumes the previous one as a versioned package.
 
 ## Guarantees
 
-- **Lossless**: only leading horizontal whitespace of statement lines
-  changes. Opaque content — note bodies, legend/header/footer and
-  `skinparam` block bodies, block-comment continuations, raw frontier
-  lines — is preserved byte-identical.
+- **Lossless**: only whitespace of statement lines changes — every
+  non-whitespace byte is preserved in order. Opaque content — note
+  bodies, legend/header/footer and `skinparam` block bodies,
+  block-comment continuations, raw frontier lines — is preserved
+  byte-identical.
 - **Idempotent**: `fmt(fmt(x)) == fmt(x)`, verified by tests.
 
 ## Canonical style (v1)

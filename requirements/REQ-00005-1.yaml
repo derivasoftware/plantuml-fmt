@@ -1,0 +1,13 @@
+requirement:
+  id: REQ-00005-1
+  title: The command-line interface shall report offending files in check mode and rewrite them in write mode
+  description: >
+    The command-line interface shall report offending files in check mode and rewrite them in write mode
+  rationale: >
+    --check is the CI gate (exit 1, list files, write nothing); the default mode formats in place.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00005-1
+  tags:
+    - cli

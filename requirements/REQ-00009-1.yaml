@@ -1,0 +1,15 @@
+requirement:
+  id: REQ-00009-1
+  title: The formatter shall indent sequence frame bodies
+  description: >
+    The formatter shall indent sequence frame bodies
+  rationale: >
+    Frame bodies gain one level like braced blocks; else and end lines stay at frame depth. Extends the v0 indentation rule to the v0.2.0 grammar's sequence frames.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+    - SREQ-00007-1
+  tags:
+    - frames
+    - style

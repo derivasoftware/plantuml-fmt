@@ -12,7 +12,7 @@ requirement:
     faithfully rebuild. Revision 2 widens the v0 guarantee (leading
     whitespace only) to whole-line whitespace, which is what the
     intra-line style rules require.
-  status: DRAFT
+  status: APPROVED
   asil: QM
   parent_ids:
     - SREQ-00002-1

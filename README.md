@@ -8,21 +8,27 @@ Each tool consumes the previous one as a versioned package.
 
 ## Guarantees
 
-- **Lossless**: only leading horizontal whitespace of statement lines
-  changes. Opaque content — note bodies, legend/header/footer and
-  `skinparam` block bodies, block-comment continuations, raw frontier
-  lines — is preserved byte-identical.
+- **Lossless**: only whitespace of statement lines changes — every
+  non-whitespace byte is preserved in order. Opaque content — note
+  bodies, legend/header/footer and `skinparam` block bodies,
+  block-comment continuations, raw frontier lines — is preserved
+  byte-identical.
 - **Idempotent**: `fmt(fmt(x)) == fmt(x)`, verified by tests.
 
-## v0 canonical style
+## Canonical style (v1)
 
-- Two-space indentation per enclosing block (`{ }` bodies of classes,
-  packages, namespaces, together blocks).
-- Statements outside blocks sit at column 0.
-- Everything after the first non-whitespace byte of a line is untouched.
+1. Two-space indentation per enclosing block (`{ }` bodies) **and per
+   sequence frame** (`alt`/`loop`/… bodies; `else`/`end` at frame depth).
+2. Statements outside blocks sit at column 0.
+3. Relations: single spaces between endpoints, cardinalities and the
+   operator; labels emitted as ` : label`.
+4. Members: `visibility {modifiers} name : type`, methods
+   `name(p1, p2) : type` with `, `-joined parameters.
+5. Anything a rule cannot faithfully rebuild — free-text members, opaque
+   bodies, multi-line spans — keeps its own spacing verbatim.
 
-Later revisions will add intra-line normalization (spacing around
-relation operators and colons) as explicit, versioned style rules.
+Every rule is a versioned REQ; only whitespace ever changes
+(v0 touched leading whitespace only; v1 widened to whole-line).
 
 ## Usage
 

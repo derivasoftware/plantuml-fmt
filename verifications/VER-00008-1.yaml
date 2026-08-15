@@ -1,0 +1,9 @@
+verification:
+  id: VER-00008-1
+  req_id: REQ-00008-1
+  title: Member spacing test pins visibility, params and types
+  description: >
+    Member spacing test pins visibility, params and types
+  method: test
+  test_ids:
+    - tests/test_formatter.py::test_member_spacing_normalizes

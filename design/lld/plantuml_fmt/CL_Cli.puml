@@ -6,8 +6,8 @@
 
 namespace plantuml_fmt.cli {
   class "<<module>>" as CliModule {
-    + iter_files(paths: Iterable[str]): Iterator[pathlib.Path]
-    + main(argv: list[str] | None): int
+    + iter_files(paths: Iterable[str]) : Iterator[pathlib.Path]
+    + main(argv: list[str] | None) : int
   }
   CliModule ..> plantuml_fmt.formatter.FormatterModule
 }

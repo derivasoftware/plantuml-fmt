@@ -1,13 +1,20 @@
 @startuml CL_PlantumlFmt
 ' requirement REQ-00001-1
 ' requirement REQ-00002-1
-' requirement REQ-00003-1
+' requirement REQ-00003-2
 ' requirement REQ-00004-1
 ' requirement REQ-00005-1
 ' requirement REQ-00006-1
+' requirement REQ-00007-1
+' requirement REQ-00008-1
+' requirement REQ-00009-1
 
 !startsub Formatter
 !includesub ./CL_Formatter.puml!Formatter
+!endsub
+
+!startsub Rules
+!includesub ./CL_Rules.puml!Rules
 !endsub
 
 !startsub Cli

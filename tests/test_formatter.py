@@ -18,7 +18,12 @@ class Kernel {
    end note
 /' block
       comment continuation '/
-    Dog --|> Animal
+    Dog   --|>   Animal:barks
+alt cached
+        cli   ->   repo:load
+else
+      cli  -->  user : ask
+end
 skinparam class {
    BackgroundColor White
 }
@@ -41,7 +46,12 @@ note right of Kernel
 end note
 /' block
       comment continuation '/
-Dog --|> Animal
+Dog --|> Animal : barks
+alt cached
+  cli -> repo : load
+else
+  cli --> user : ask
+end
 skinparam class {
    BackgroundColor White
 }
@@ -58,10 +68,11 @@ def test_idempotent():
     assert format_text(once) == once
 
 
-def test_only_leading_whitespace_changes():
-    before = [line.lstrip(" \t") for line in MESSY.split("\n")]
-    after = [line.lstrip(" \t") for line in format_text(MESSY).split("\n")]
-    assert before == after
+def test_only_whitespace_changes():
+    def squash(text):
+        return [line.replace(" ", "").replace("\t", "") for line in text.split("\n")]
+
+    assert squash(MESSY) == squash(format_text(MESSY))
 
 
 def test_note_body_untouched():
@@ -78,3 +89,32 @@ def test_raw_block_body_untouched():
 def test_block_comment_continuation_untouched():
     out = format_text(MESSY)
     assert "      comment continuation '/" in out
+
+
+MEMBER_MESSY = """\
+@startuml
+class Acc {
+  +   deposit( amount : int ,  ledger )  :  void
+  -balance:int
+}
+@enduml
+"""
+
+
+def test_member_spacing_normalizes():
+    out = format_text(MEMBER_MESSY)
+    assert "  + deposit(amount : int, ledger) : void\n" in out
+    assert "  - balance : int\n" in out
+
+
+def test_frame_bodies_indent():
+    src = "@startuml\nloop each\ncli -> repo\nend\n@enduml\n"
+    out = format_text(src)
+    assert "loop each\n  cli -> repo\nend\n" in out
+
+
+def test_relation_spacing_normalizes():
+    src = "@startuml\nDog   --|>   Animal:barks\nA -->B\n@enduml\n"
+    out = format_text(src)
+    assert "Dog --|> Animal : barks\n" in out
+    assert "A --> B\n" in out

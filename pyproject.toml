@@ -1,6 +1,6 @@
 [project]
 name = "plantuml-fmt"
-version = "0.1.0"
+version = "0.2.0"
 description = "Canonical formatter for PlantUML, built on tree-sitter-plantuml"
 readme = "README.md"
 license = { text = "MIT" }

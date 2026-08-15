@@ -1,0 +1,9 @@
+verification:
+  id: VER-00001-1
+  req_id: REQ-00001-1
+  title: Golden test pins the canonical indentation
+  description: >
+    Golden test pins the canonical indentation
+  method: test
+  test_ids:
+    - tests/test_formatter.py::test_golden

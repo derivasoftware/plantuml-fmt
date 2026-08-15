@@ -1,0 +1,9 @@
+verification:
+  id: VER-00005-1
+  req_id: REQ-00005-1
+  title: CLI test covers check, write and clean passes
+  description: >
+    CLI test covers check, write and clean passes
+  method: test
+  test_ids:
+    - tests/test_cli.py::test_check_then_write_then_clean

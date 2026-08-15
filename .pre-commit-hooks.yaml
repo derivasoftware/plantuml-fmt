@@ -1,0 +1,7 @@
+- id: plantuml-fmt
+  name: plantuml-fmt
+  description: Format PlantUML sources into the canonical style.
+  entry: plantuml-fmt
+  language: python
+  types_or: [file]
+  files: '\.(puml|plantuml|iuml|wsd)$'

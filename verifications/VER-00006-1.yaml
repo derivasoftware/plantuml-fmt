@@ -1,0 +1,9 @@
+verification:
+  id: VER-00006-1
+  req_id: REQ-00006-1
+  title: Hook test pins the pre-commit declaration
+  description: >
+    Hook test pins the pre-commit declaration
+  method: test
+  test_ids:
+    - tests/test_hooks.py::test_precommit_hook_declared

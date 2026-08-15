@@ -1,0 +1,28 @@
+[project]
+name = "plantuml-fmt"
+version = "0.1.0"
+description = "Canonical formatter for PlantUML, built on tree-sitter-plantuml"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "dcoello-dev" }]
+requires-python = ">=3.10"
+dependencies = [
+    "tree-sitter>=0.25",
+    "tree-sitter-plantuml @ git+https://gitlab.semantiqa.dev/deriva/plantuml/tree-sitter-plantuml.git@main",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+plantuml-fmt = "plantuml_fmt.cli:main"
+
+[project.urls]
+Homepage = "https://gitlab.semantiqa.dev/deriva/plantuml/plantuml-fmt"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

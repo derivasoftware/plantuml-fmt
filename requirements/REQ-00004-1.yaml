@@ -1,0 +1,13 @@
+requirement:
+  id: REQ-00004-1
+  title: The formatter shall preserve opaque content byte-identically
+  description: >
+    The formatter shall preserve opaque content byte-identically
+  rationale: >
+    Note bodies, raw-block bodies and block-comment continuations render as-is in PlantUML; even their indentation is content.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00004-1
+  tags:
+    - opaque-content

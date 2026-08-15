@@ -1,0 +1,11 @@
+requirement:
+  id: SREQ-00001-1
+  title: The tool shall format PlantUML sources into a canonical style
+  description: >
+    The tool shall format PlantUML sources into a canonical style.
+  rationale: >
+    Umbrella: a deterministic, versioned canonical style for PlantUML text, built on the tree-sitter-plantuml grammar. The formatter is the second product of the deriva/plantuml toolchain family.
+  owner: dcoello-dev
+  status: APPROVED
+  asil: QM
+  parent_ids: []

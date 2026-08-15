@@ -1,0 +1,12 @@
+requirement:
+  id: SREQ-00006-1
+  title: The tool shall provide a pre-commit hook
+  description: >
+    The tool shall provide a pre-commit hook.
+  rationale: >
+    A .pre-commit-hooks.yaml at the repo root so consumers pin the repo and get formatting on commit — the primary distribution channel for a formatter.
+  owner: dcoello-dev
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1

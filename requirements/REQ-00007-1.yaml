@@ -1,0 +1,15 @@
+requirement:
+  id: REQ-00007-1
+  title: The formatter shall normalize relation spacing to single spaces
+  description: >
+    The formatter shall normalize relation spacing to single spaces
+  rationale: >
+    Endpoints, cardinalities and the operator separated by single spaces; labels emitted as ' : label'. Rebuilt from CST fields, refusing multi-line spans.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+    - SREQ-00007-1
+  tags:
+    - relations
+    - style

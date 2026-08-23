@@ -30,6 +30,12 @@ Each tool consumes the previous one as a versioned package.
 Every rule is a versioned REQ; only whitespace ever changes
 (v0 touched leading whitespace only; v1 widened to whole-line).
 
+## Documentation
+
+- [`doc/rules.md`](doc/rules.md) — the versioned rulebook with
+  before/after examples, the two invariants, and the recipe for adding
+  a rule.
+
 ## Usage
 
 ```bash

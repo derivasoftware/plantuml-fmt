@@ -1,0 +1,22 @@
+requirement:
+  id: REQ-00003-3
+  title: The formatter shall change only whitespace, blank lines included
+  description: >
+    The formatter shall change only whitespace, blank lines included: v2
+    rewrites normalize spacing anywhere in a rewritable line and the
+    blank lines between statements, and every non-whitespace byte is
+    preserved in order. Opaque content remains byte-identical.
+  rationale: >
+    Losslessness by construction: rewriters re-emit the CST tokens with
+    canonical whitespace between them and refuse any line they cannot
+    faithfully rebuild; the blank-line policy only drops or keeps empty
+    lines. Revision 3 widens the charter from statement-line whitespace
+    to inter-line whitespace, which is what the blank-line policy
+    requires. The wild-corpus eval (scripts/eval_wild_corpus.py)
+    asserts both invariants over every diagram it can find.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00002-1
+  tags:
+    - losslessness

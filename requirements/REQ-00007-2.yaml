@@ -1,0 +1,21 @@
+requirement:
+  id: REQ-00007-2
+  title: The formatter shall normalize relation spacing to single spaces preserving token adjacency
+  description: >
+    The formatter shall normalize relation spacing to single spaces preserving token adjacency
+  rationale: >
+    Endpoints, cardinalities, qualifiers, operators, activations and
+    colors separated by single spaces; labels emitted as ' : label'.
+    Tokens the grammar binds by immediate adjacency — role suffixes on
+    cardinalities ("owner"/items) — stay glued: a space there changes
+    what re-parses. Revision 2 extends the v1 rule to the sequence-era
+    relation children (grammar 0.6+) and records the adjacency
+    exception.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+    - SREQ-00007-1
+  tags:
+    - relations
+    - style

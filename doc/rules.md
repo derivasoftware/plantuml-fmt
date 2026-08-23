@@ -55,3 +55,32 @@ raw frontier lines.
 `plantuml-lsp` delegates `textDocument/formatting` here — one
 implementation of the style, however it is invoked (CLI, pre-commit,
 editor).
+
+## v2 rules
+
+**R5 — blank lines.** A run of consecutive blank lines collapses to
+one; blanks directly after a block/frame opener (`{`, frame head,
+`else`) or directly before its closer (`}`, `end`, `else`) disappear.
+Single blank lines between statements survive — the policy removes
+noise, it never inserts. Blank lines inside opaque bodies are untouched.
+
+```
+class A {          class A {
+                     + x : int
+  +x : int         }
+
+}                  class B
+
+
+class B
+```
+
+**R6 — token adjacency.** Single-space normalization never separates
+tokens the grammar binds by immediate adjacency: `"owner"/items` role
+suffixes stay glued — a space there changes what re-parses.
+
+Both invariants are asserted in the wild on demand:
+
+```bash
+.venv/bin/python scripts/eval_wild_corpus.py <roots>   # lossy: 0  unstable: 0
+```

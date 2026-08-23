@@ -8,7 +8,7 @@ Each tool consumes the previous one as a versioned package.
 
 ## Guarantees
 
-- **Lossless**: only whitespace of statement lines changes — every
+- **Lossless**: only whitespace changes (statement lines and blank lines) — every
   non-whitespace byte is preserved in order. Opaque content — note
   bodies, legend/header/footer and `skinparam` block bodies,
   block-comment continuations, raw frontier lines — is preserved
@@ -28,7 +28,7 @@ Each tool consumes the previous one as a versioned package.
    bodies, multi-line spans — keeps its own spacing verbatim.
 
 Every rule is a versioned REQ; only whitespace ever changes
-(v0 touched leading whitespace only; v1 widened to whole-line).
+(v0: leading whitespace; v1: whole-line; v2: blank lines between statements).
 
 ## Documentation
 

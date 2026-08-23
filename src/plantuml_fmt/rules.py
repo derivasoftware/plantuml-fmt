@@ -35,6 +35,10 @@ def rewrite_relation(src: bytes, node: Node) -> bytes | None:
             label = _text(src, child).strip()
         elif kind == ":":
             continue
+        elif kind == "role" and parts:
+            # roles are adjacent to their cardinality ("owner"/items) —
+            # a space would change what re-parses
+            parts[-1] += _text(src, child).strip()
         else:
             parts.append(_text(src, child).strip())
     line = b" ".join(p for p in parts if p)

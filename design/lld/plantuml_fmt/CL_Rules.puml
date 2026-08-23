@@ -1,9 +1,9 @@
 @startuml CL_Rules
-' requirement REQ-00003-2
-' requirement REQ-00007-1
+' requirement REQ-00003-3
+' requirement REQ-00007-2
 ' requirement REQ-00008-1
 
-!startsub Rules
+!startsub RulesModule
 
 namespace plantuml_fmt.rules {
   class "<<module>>" as RulesModule {

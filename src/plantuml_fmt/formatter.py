@@ -1,11 +1,17 @@
-"""Indentation-normalizing PlantUML formatter (v0).
+"""Whitespace-canonicalizing PlantUML formatter (v2).
 
-The v0 canonical style touches ONLY leading horizontal whitespace:
-statement lines are re-indented to two spaces per enclosing block, and
-opaque content — note bodies, raw-block bodies, block-comment
-continuation lines — is preserved byte-identical. Everything after the
-first non-whitespace byte of a line never changes, which makes the
-formatter lossless by construction and trivially idempotent.
+Three layers of canon, all whitespace-only so the formatter stays
+lossless by construction and idempotent:
+
+- indentation: two spaces per enclosing block or sequence frame;
+- intra-line: relations and members rebuilt from the CST with single
+  spaces (immediate-adjacency tokens, like cardinality roles, stay
+  glued);
+- blank lines (v2): runs collapse to one, and blanks touching a block
+  or frame edge disappear.
+
+Opaque content — note bodies, raw-block bodies, block-comment
+continuation lines — is preserved byte-identical (frozen rows).
 """
 
 import tree_sitter_plantuml
@@ -64,13 +70,36 @@ def _indent_frame(node: Node, depth: list[int]) -> None:
             depth[child.start_point[0]] -= 1
 
 
+def _mark_block_edges(node: Node, openers: set[int],
+                      closers: set[int]) -> None:
+    openers.add(node.start_point[0])
+    brace_row = _child_row(node, "}")
+    if brace_row is not None:
+        closers.add(brace_row)
+
+
+def _mark_frame_edges(node: Node, openers: set[int],
+                      closers: set[int]) -> None:
+    openers.add(node.start_point[0])
+    end_row = _child_row(node, "end")
+    if end_row is not None:
+        closers.add(end_row)
+    for child in node.children:
+        if child.type == "else_clause":
+            openers.add(child.start_point[0])
+            closers.add(child.start_point[0])
+
+
 def _collect(node: Node, depth: list[int], frozen: list[bool],
-             rewrites: dict[int, Node]) -> None:
+             rewrites: dict[int, Node], openers: set[int],
+             closers: set[int]) -> None:
     kind = node.type
     if kind in _BLOCKS:
         _indent_block(node, depth)
+        _mark_block_edges(node, openers, closers)
     elif kind == "frame_block":
         _indent_frame(node, depth)
+        _mark_frame_edges(node, openers, closers)
     elif kind in ("relation", "member"):
         rewrites[node.start_point[0]] = node
     elif kind == "note_statement":
@@ -86,7 +115,7 @@ def _collect(node: Node, depth: list[int], frozen: list[bool],
         # leading whitespace is outside it and stays reindentable
         _freeze(frozen, node.start_point[0] + 1, node.end_point[0])
     for child in node.children:
-        _collect(child, depth, frozen, rewrites)
+        _collect(child, depth, frozen, rewrites, openers, closers)
 
 
 def _rewrite(node: Node, src: bytes) -> bytes | None:
@@ -95,13 +124,43 @@ def _rewrite(node: Node, src: bytes) -> bytes | None:
     return rewrite_member(src, node)
 
 
+def _is_soft_blank(lines: list[bytes], frozen: list[bool], row: int) -> bool:
+    return not lines[row].strip() and not frozen[row]
+
+
+def _neighbor(row: int, step: int, lines: list[bytes],
+              frozen: list[bool]) -> int:
+    """Nearest non-blank row in the given direction, skipping soft blanks."""
+    row += step
+    while 0 <= row < len(lines) and _is_soft_blank(lines, frozen, row):
+        row += step
+    return row
+
+
+def _keep_blank(row: int, lines: list[bytes], frozen: list[bool],
+                openers: set[int], closers: set[int]) -> bool:
+    """v2 blank-line policy: a run of blank lines collapses to one, and
+    blanks touching a block or frame edge disappear entirely. Frozen
+    rows (opaque bodies) never reach this decision."""
+    prev = _neighbor(row, -1, lines, frozen)
+    nxt = _neighbor(row, 1, lines, frozen)
+    if prev >= 0 and prev in openers:
+        return False
+    if nxt < len(lines) and nxt in closers:
+        return False
+    # collapse: only the first blank of a run survives
+    return not (row > 0 and _is_soft_blank(lines, frozen, row - 1))
+
+
 def format_bytes(src: bytes) -> bytes:
     tree = _get_parser().parse(src)
     lines = src.split(b"\n")
     depth = [0] * len(lines)
     frozen = [False] * len(lines)
     rewrites: dict[int, Node] = {}
-    _collect(tree.root_node, depth, frozen, rewrites)
+    openers: set[int] = set()
+    closers: set[int] = set()
+    _collect(tree.root_node, depth, frozen, rewrites, openers, closers)
 
     out = []
     for row, line in enumerate(lines):
@@ -110,7 +169,8 @@ def format_bytes(src: bytes) -> bytes:
             continue
         stripped = line.lstrip(b" \t")
         if not stripped:
-            out.append(b"")
+            if _keep_blank(row, lines, frozen, openers, closers):
+                out.append(b"")
             continue
         node = rewrites.get(row)
         if node is not None:

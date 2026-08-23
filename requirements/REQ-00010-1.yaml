@@ -1,0 +1,19 @@
+requirement:
+  id: REQ-00010-1
+  title: The formatter shall collapse blank-line runs and strip blanks at block edges
+  description: >
+    The formatter shall collapse blank-line runs and strip blanks at block edges
+  rationale: >
+    A run of consecutive blank lines collapses to one; blank lines
+    directly after a block or frame opener ({, frame head, else) or
+    directly before its closer (}, end, else) disappear. Blank lines
+    inside opaque bodies (notes, raw blocks) are frozen rows and never
+    reach the policy. Single blank lines between statements are kept —
+    the policy removes noise, it never inserts.
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+  tags:
+    - blank-lines
+    - style

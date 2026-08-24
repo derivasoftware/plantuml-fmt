@@ -6,33 +6,39 @@ relations and members token by token. The figures below are the repository's
 actual design, rendered from its sources on every inject.
 
 <!-- folio: design --assets assets -->
-### CL_Cli
+### System view
 
-_cl · `design/lld/plantuml_fmt/CL_Cli.puml`_ (traces to REQ-00005-1, REQ-00006-1)
+#### HLD_PlantumlFmt
 
-![CL_Cli](assets/CL_Cli.svg)
+_hld · `design/hld/HLD_PlantumlFmt.puml`_ (traces to SREQ-00001-1)
 
-### CL_Formatter
+![HLD_PlantumlFmt](assets/HLD_PlantumlFmt.svg)
 
-_cl · `design/lld/plantuml_fmt/CL_Formatter.puml`_ (traces to REQ-00001-1, REQ-00002-1, REQ-00003-3, REQ-00004-1, REQ-00009-1, REQ-00010-1)
+### Module overview
 
-![CL_Formatter](assets/CL_Formatter.svg)
-
-### CL_PlantumlFmt
+#### CL_PlantumlFmt
 
 _cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_ (traces to REQ-00001-1, REQ-00002-1, REQ-00003-3, REQ-00004-1, REQ-00005-1, REQ-00006-1, REQ-00007-2, REQ-00008-1, REQ-00009-1)
 
 ![CL_PlantumlFmt](assets/CL_PlantumlFmt.svg)
 
-### CL_Rules
+### Class detail
 
-_cl · `design/lld/plantuml_fmt/CL_Rules.puml`_ (traces to REQ-00003-3, REQ-00007-2, REQ-00008-1)
+<details>
+<summary><code>CL_Formatter</code> · traces to <code>REQ-00001-1</code> <code>REQ-00002-1</code> <code>REQ-00003-3</code> <code>REQ-00004-1</code> <code>REQ-00009-1</code> <code>REQ-00010-1</code></summary>
+<p><code>design/lld/plantuml_fmt/CL_Formatter.puml</code></p>
+<p><img alt="CL_Formatter" src="assets/CL_Formatter.svg"></p>
+</details>
 
-![CL_Rules](assets/CL_Rules.svg)
+<details>
+<summary><code>CL_Rules</code> · traces to <code>REQ-00003-3</code> <code>REQ-00007-2</code> <code>REQ-00008-1</code></summary>
+<p><code>design/lld/plantuml_fmt/CL_Rules.puml</code></p>
+<p><img alt="CL_Rules" src="assets/CL_Rules.svg"></p>
+</details>
 
-### HLD_PlantumlFmt
-
-_hld · `design/hld/HLD_PlantumlFmt.puml`_ (traces to SREQ-00001-1)
-
-![HLD_PlantumlFmt](assets/HLD_PlantumlFmt.svg)
+<details>
+<summary><code>CL_Cli</code> · traces to <code>REQ-00005-1</code> <code>REQ-00006-1</code></summary>
+<p><code>design/lld/plantuml_fmt/CL_Cli.puml</code></p>
+<p><img alt="CL_Cli" src="assets/CL_Cli.svg"></p>
+</details>
 <!-- /folio -->

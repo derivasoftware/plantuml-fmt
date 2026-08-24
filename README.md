@@ -1,14 +1,14 @@
 # plantuml-fmt
 
-Canonical formatter for [PlantUML](https://plantuml.com/), built on
-[tree-sitter-plantuml](https://gitlab.semantiqa.dev/deriva/plantuml/tree-sitter-plantuml).
-Part of the `deriva/plantuml` family: grammar → formatter → LSP → editor.
-
 <!-- folio: colophon --project plantuml-fmt -->
-![powered by: argos](https://img.shields.io/badge/powered%20by-argos-1f6feb) ![reqs verified: 100%](https://img.shields.io/badge/reqs%20verified-100%25-2ea44f)
+![powered by: argos](https://img.shields.io/badge/powered%20by-argos-1f6feb) ![reqs verified: 100%](https://img.shields.io/badge/reqs%20verified-100%25-2ea44f) ![UT coverage: n/a](https://img.shields.io/badge/UT%20coverage-n%2Fa-lightgrey) ![system test coverage: n/a](https://img.shields.io/badge/system%20test%20coverage-n%2Fa-lightgrey)
 
 > **plantuml-fmt** is powered by **argos**. **folio** generates this documentation from the repository's model: 10 requirements · 10 verifications · 0 constraints. Quality: 100% verified.
 <!-- /folio -->
+
+Canonical formatter for [PlantUML](https://plantuml.com/), built on
+[tree-sitter-plantuml](https://gitlab.semantiqa.dev/deriva/plantuml/tree-sitter-plantuml).
+Part of the `deriva/plantuml` family: grammar → formatter → LSP → editor.
 
 Two guarantees: **lossless** (only whitespace changes; opaque content is
 preserved byte-identical) and **idempotent** (`fmt(fmt(x)) == fmt(x)`).
@@ -62,4 +62,5 @@ VS Code produces the same bytes as the hook.
 - [Canonical style](doc/rules.md): the formatting rules, one by one
 - [Architecture](doc/architecture.md): the model's diagrams, rendered from source
 - [Requirements & status](doc/requirements.md): the per-requirement board with its evidence
+- [Release report](doc/report.md): what the last release delivered
 - [Rationale](doc/rationale.md): why the formatter is the way it is

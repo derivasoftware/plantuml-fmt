@@ -1,6 +1,6 @@
 verification:
   id: VER-00003-2
-  req_id: REQ-00003-3
+  req_id: REQ-00003-4
   title: Property test compares per-line whitespace-squashed content
   description: >
     Squashing every space and tab out of each line yields identical

@@ -18,20 +18,20 @@ _hld · `design/hld/HLD_PlantumlFmt.puml`_ (traces to SREQ-00001-1)
 
 #### CL_PlantumlFmt
 
-_cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_ (traces to REQ-00001-1, REQ-00002-1, REQ-00003-3, REQ-00004-1, REQ-00005-1, REQ-00006-1, REQ-00007-2, REQ-00008-1, REQ-00009-1)
+_cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_ (traces to REQ-00001-1, REQ-00002-1, REQ-00003-4, REQ-00004-1, REQ-00005-1, REQ-00006-1, REQ-00007-2, REQ-00008-1, REQ-00009-1)
 
 ![CL_PlantumlFmt](assets/CL_PlantumlFmt.svg)
 
 ### Class detail
 
 <details>
-<summary><code>CL_Formatter</code> · traces to <code>REQ-00001-1</code> <code>REQ-00002-1</code> <code>REQ-00003-3</code> <code>REQ-00004-1</code> <code>REQ-00009-1</code> <code>REQ-00010-1</code></summary>
+<summary><code>CL_Formatter</code> · traces to <code>REQ-00001-1</code> <code>REQ-00002-1</code> <code>REQ-00003-4</code> <code>REQ-00004-1</code> <code>REQ-00009-1</code> <code>REQ-00010-1</code></summary>
 <p><code>design/lld/plantuml_fmt/CL_Formatter.puml</code></p>
 <p><img alt="CL_Formatter" src="assets/CL_Formatter.svg"></p>
 </details>
 
 <details>
-<summary><code>CL_Rules</code> · traces to <code>REQ-00003-3</code> <code>REQ-00007-2</code> <code>REQ-00008-1</code></summary>
+<summary><code>CL_Rules</code> · traces to <code>REQ-00003-4</code> <code>REQ-00007-2</code> <code>REQ-00008-1</code></summary>
 <p><code>design/lld/plantuml_fmt/CL_Rules.puml</code></p>
 <p><img alt="CL_Rules" src="assets/CL_Rules.svg"></p>
 </details>

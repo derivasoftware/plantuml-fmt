@@ -1,9 +1,9 @@
 # plantuml-fmt
 
 <!-- folio: colophon --project plantuml-fmt --junit test-results/junit.xml --coverage_ut test-results/coverage-ut.xml --coverage_st test-results/coverage-st.xml -->
-![powered by: argos](https://img.shields.io/badge/powered%20by-argos-1f6feb) ![reqs verified: 100%](https://img.shields.io/badge/reqs%20verified-100%25-2ea44f) ![tests passing: 100%](https://img.shields.io/badge/tests%20passing-100%25-2ea44f) ![UT coverage: 95%](https://img.shields.io/badge/UT%20coverage-95%25-2ea44f) ![system test coverage: 61%](https://img.shields.io/badge/system%20test%20coverage-61%25-e05d44) ![argos diagnostics: 0](https://img.shields.io/badge/argos%20diagnostics-0-2ea44f)
+![powered by: argos](https://img.shields.io/badge/powered%20by-argos-1f6feb) ![verified: 100%](https://img.shields.io/badge/verified-100%25-2ea44f) ![tests: 100%](https://img.shields.io/badge/tests-100%25-2ea44f) ![UT: 95%](https://img.shields.io/badge/UT-95%25-2ea44f) ![ST: 65%](https://img.shields.io/badge/ST-65%25-e05d44) ![diagnostics: 0](https://img.shields.io/badge/diagnostics-0-2ea44f)
 
-> **plantuml-fmt** is powered by **argos**. **folio** generates this documentation from the repository's model: 10 requirements · 10 verifications · 0 constraints. Quality: 100% verified · 100% tests passing · 95% UT coverage · 61% system test coverage.
+> **plantuml-fmt** is powered by **argos**. **folio** generates this documentation from the repository's model: 10 requirements · 10 verifications · 0 constraints. Quality: 100% verified · 100% tests passing · 95% UT coverage · 65% ST coverage.
 <!-- /folio -->
 
 Canonical formatter for [PlantUML](https://plantuml.com/), built on

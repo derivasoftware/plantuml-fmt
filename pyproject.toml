@@ -28,7 +28,6 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 
 [tool.pytest.ini_options]
-addopts = """
---junitxml=test-results/junit.xml \
---cov=plantuml_fmt --cov-report=xml:test-results/coverage-ut.xml \
---cov-report=term:skip-covered"""
+markers = [
+  "system: end-to-end invariant pass over a real diagram tree",
+]

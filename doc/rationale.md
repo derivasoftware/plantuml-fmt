@@ -31,9 +31,9 @@ A run of consecutive blank lines collapses to one; blank lines directly after a 
 
 Only whitespace may change between input and output; everything after the first non-whitespace byte of a line is untouchable in v0. Losslessness is what makes a formatter safe to run unattended in pre-commit.
 
-#### REQ-00003-3 — The formatter shall change only whitespace, blank lines included
+#### REQ-00003-4 — The formatter shall change only whitespace, blank lines included
 
-Losslessness by construction: rewriters re-emit the CST tokens with canonical whitespace between them and refuse any line they cannot faithfully rebuild; the blank-line policy only drops or keeps empty lines. Revision 3 widens the charter from statement-line whitespace to inter-line whitespace, which is what the blank-line policy requires. The wild-corpus eval (scripts/eval_wild_corpus.py) asserts both invariants over every diagram it can find.
+Losslessness by construction: rewriters re-emit the CST tokens with canonical whitespace between them and refuse any line they cannot faithfully rebuild; the blank-line policy only drops or keeps empty lines. Revision 3 widened the charter from statement-line whitespace to inter-line whitespace, which is what the blank-line policy requires. Revision 4 moves the corpus eval into the test suite: the system-marked pass (pytest -m system) asserts both invariants over every diagram under the repository's design tree, or any corpus root named by PLANTUML_FMT_CORPUS.
 
 ### SREQ-00003-1 — The formatter shall emit identical output when reformatting its own output
 

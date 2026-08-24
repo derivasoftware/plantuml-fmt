@@ -20,4 +20,9 @@ test:
         "https://${CI_SERVER_HOST}/"
       python3 -m venv .venv-ci
       ./.venv-ci/bin/pip install -q -e ".[dev]"
-      ./.venv-ci/bin/python scripts/gen_evidence.py
+      mkdir -p test-results
+      ./.venv-ci/bin/pytest -q -m "not system" \
+        --junitxml=test-results/junit.xml \
+        --cov=plantuml_fmt --cov-report=xml:test-results/coverage-ut.xml
+      ./.venv-ci/bin/pytest -q -m system \
+        --cov=plantuml_fmt --cov-report=xml:test-results/coverage-st.xml

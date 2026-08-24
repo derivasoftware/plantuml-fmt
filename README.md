@@ -36,10 +36,10 @@ exits 1:
 plantuml-fmt --check diagrams/
 ```
 
-**Rewrite in place** to the canonical style:
+**Rewrite in place** to the canonical style (the default mode):
 
 ```bash
-plantuml-fmt --write diagrams/
+plantuml-fmt diagrams/
 ```
 
 **As a pre-commit hook**, so formatting runs before every commit:

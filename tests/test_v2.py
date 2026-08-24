@@ -10,6 +10,7 @@ def fmt(src: str) -> str:
 
 # ── Blank-line policy ────────────────────────────────────────────────────────
 
+
 def test_collapses_blank_runs_to_one():
     src = "@startuml\nclass A\n\n\n\nclass B\n@enduml\n"
     assert fmt(src) == "@startuml\nclass A\n\nclass B\n@enduml\n"
@@ -39,6 +40,7 @@ def test_note_bodies_keep_their_blank_lines():
 
 # ── Adjacency-preserving rebuilds ────────────────────────────────────────────
 
+
 def test_role_slash_cardinalities_stay_glued():
     src = '@startuml\nUser   "owner"/1   --   "0..n"/items   Item\n@enduml\n'
     assert fmt(src) == '@startuml\nUser "owner"/1 -- "0..n"/items Item\n@enduml\n'
@@ -56,6 +58,7 @@ def test_boundary_messages_normalize():
 
 # ── Round-trip safety ────────────────────────────────────────────────────────
 
+
 def test_formatted_output_is_idempotent_and_lossless():
     src = (
         "@startuml\n"
@@ -69,5 +72,8 @@ def test_formatted_output_is_idempotent_and_lossless():
     )
     once = fmt(src)
     assert fmt(once) == once
-    strip = lambda s: "".join(s.split())
+
+    def strip(text: str) -> str:
+        return "".join(text.split())
+
     assert strip(once) == strip(src)

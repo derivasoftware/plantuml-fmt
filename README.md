@@ -61,6 +61,6 @@ VS Code produces the same bytes as the hook.
 
 - [Canonical style](doc/rules.md): the formatting rules, one by one
 - [Architecture](doc/architecture.md): the model's diagrams, rendered from source
-- [Requirements & status](doc/requirements.md): the per-requirement board with its evidence
+- [Requirements & status](doc/requirements.md): the traceability matrix and the per-requirement board
 - [Release report](doc/report.md): what the last release delivered
 - [Rationale](doc/rationale.md): why the formatter is the way it is

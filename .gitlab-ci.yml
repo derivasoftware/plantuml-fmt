@@ -25,4 +25,5 @@ test:
         --junitxml=test-results/junit.xml \
         --cov=plantuml_fmt --cov-report=xml:test-results/coverage-ut.xml
       ./.venv-ci/bin/pytest -q -m system \
+        --junitxml=test-results/junit-st.xml \
         --cov=plantuml_fmt --cov-report=xml:test-results/coverage-st.xml

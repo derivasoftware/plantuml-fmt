@@ -1,9 +1,0 @@
-verification:
-  id: VER-00002-1
-  req_id: REQ-00002-1
-  title: Idempotency test reformats the formatter output
-  description: >
-    Idempotency test reformats the formatter output
-  method: test
-  test_ids:
-    - tests/test_formatter.py::test_idempotent

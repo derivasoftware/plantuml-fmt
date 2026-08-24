@@ -24,7 +24,7 @@ _cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_
 
 - traces to: `REQ-00001-1` `REQ-00002-1` `REQ-00003-4` `REQ-00004-1` `REQ-00005-1` `REQ-00006-1` `REQ-00007-2` `REQ-00008-1` `REQ-00009-1`
 - implemented in: `src/plantuml_fmt/cli.py` · `src/plantuml_fmt/formatter.py` · `src/plantuml_fmt/rules.py`
-- verified by: `tests/test_cli.py` (1) · `tests/test_formatter.py` (9) · `tests/test_hooks.py` (1) · `tests/test_v2.py` (3)
+- verified by: `tests/test_cli.py` (1) · `tests/test_formatter.py` (9) · `tests/test_hooks.py` (1) · `tests/test_system_corpus.py` (1) · `tests/test_v2.py` (3)
 
 ![CL_PlantumlFmt](assets/CL_PlantumlFmt.svg)
 
@@ -35,7 +35,7 @@ _cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_
 <ul>
 <li>source: <code>design/lld/plantuml_fmt/CL_Formatter.puml</code></li>
 <li>implemented in: <code>src/plantuml_fmt/formatter.py</code></li>
-<li>verified by: <code>tests/test_formatter.py</code> (7), <code>tests/test_v2.py</code> (5)</li>
+<li>verified by: <code>tests/test_formatter.py</code> (7), <code>tests/test_system_corpus.py</code> (1), <code>tests/test_v2.py</code> (5)</li>
 </ul>
 <p><img alt="CL_Formatter" src="assets/CL_Formatter.svg"></p>
 </details>
@@ -45,7 +45,7 @@ _cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_
 <ul>
 <li>source: <code>design/lld/plantuml_fmt/CL_Rules.puml</code></li>
 <li>implemented in: <code>src/plantuml_fmt/rules.py</code></li>
-<li>verified by: <code>tests/test_formatter.py</code> (3), <code>tests/test_v2.py</code> (3)</li>
+<li>verified by: <code>tests/test_formatter.py</code> (3), <code>tests/test_system_corpus.py</code> (1), <code>tests/test_v2.py</code> (3)</li>
 </ul>
 <p><img alt="CL_Rules" src="assets/CL_Rules.svg"></p>
 </details>

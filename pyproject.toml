@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = ["pytest", "pytest-cov", "coverage"]
 
 [project.scripts]
 plantuml-fmt = "plantuml_fmt.cli:main"
@@ -26,3 +26,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = """
+--junitxml=test-results/junit.xml \
+--cov=plantuml_fmt --cov-report=xml:test-results/coverage-ut.xml \
+--cov-report=term:skip-covered"""

@@ -20,6 +20,8 @@ _hld · `design/hld/HLD_PlantumlFmt.puml`_ (traces to SREQ-00001-1)
 
 _cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_ (traces to REQ-00001-1, REQ-00002-1, REQ-00003-4, REQ-00004-1, REQ-00005-1, REQ-00006-1, REQ-00007-2, REQ-00008-1, REQ-00009-1)
 
+implemented in `src/plantuml_fmt/cli.py`, `src/plantuml_fmt/formatter.py`, `src/plantuml_fmt/rules.py` · verified by `tests/test_cli.py` (1), `tests/test_formatter.py` (9), `tests/test_hooks.py` (1), `tests/test_v2.py` (3)
+
 ![CL_PlantumlFmt](assets/CL_PlantumlFmt.svg)
 
 ### Class detail

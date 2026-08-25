@@ -7,7 +7,7 @@
 <!-- /folio -->
 
 Canonical formatter for [PlantUML](https://plantuml.com/), built on
-[tree-sitter-plantuml](https://gitlab.semantiqa.dev/deriva/plantuml/tree-sitter-plantuml).
+[tree-sitter-plantuml](https://github.com/derivasoftware/tree-sitter-plantuml).
 Part of the `deriva/plantuml` family: grammar → formatter → LSP → editor.
 
 Two guarantees: **lossless** (only whitespace changes; opaque content is
@@ -21,10 +21,10 @@ below is generated from the manifest and the latest tag:
 
 <!-- folio: install -->
 ```bash
-pip install git+https://gitlab.semantiqa.dev/deriva/plantuml/plantuml-fmt.git@v0.3.2
+pip install git+https://github.com/derivasoftware/plantuml-fmt.git@v0.3.2
 ```
 
-Or from a clone: `git clone https://gitlab.semantiqa.dev/deriva/plantuml/plantuml-fmt && pip install ./plantuml-fmt`.
+Or from a clone: `git clone https://github.com/derivasoftware/plantuml-fmt && pip install ./plantuml-fmt`.
 <!-- /folio -->
 
 ## Use cases
@@ -46,15 +46,15 @@ plantuml-fmt diagrams/
 
 ```yaml
 repos:
-  - repo: https://gitlab.semantiqa.dev/deriva/plantuml/plantuml-fmt
+  - repo: https://github.com/derivasoftware/plantuml-fmt
     rev: v0.3.2
     hooks:
       - id: plantuml-fmt
 ```
 
-**From your editor**: [plantuml-lsp](https://gitlab.semantiqa.dev/deriva/plantuml/plantuml-lsp)
+**From your editor**: [plantuml-lsp](https://github.com/derivasoftware/plantuml-lsp)
 delegates `textDocument/formatting` here, so format-on-save in Neovim
-([plantuml.nvim](https://gitlab.semantiqa.dev/deriva/plantuml/plantuml.nvim)) or
+([plantuml.nvim](https://github.com/derivasoftware/plantuml.nvim)) or
 VS Code produces the same bytes as the hook.
 
 ## Scope

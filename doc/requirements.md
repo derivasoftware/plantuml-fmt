@@ -10,7 +10,7 @@ tests with no failures.
 <!-- folio: sreqs --junit test-results/junit.xml --junit_st test-results/junit-st.xml -->
 | SREQ | Title | Implemented | UT | ST |
 | --- | --- | --- | --- | --- |
-| `SREQ-00001-1` | The tool shall format PlantUML sources into a canonical style | ✓ | ✓ | ✗ |
+| `SREQ-00001-1` | The tool shall format PlantUML sources into a canonical style | ✓ | ✓ | ~ |
 | `SREQ-00002-1` | The formatter shall preserve every input token byte-identically | ✓ | ✓ | ✓ |
 | `SREQ-00003-1` | The formatter shall emit identical output when reformatting its own output | ✓ | ✓ | ✓ |
 | `SREQ-00004-1` | The formatter shall pass opaque content through verbatim | ✓ | ✓ | ✗ |

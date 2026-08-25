@@ -22,9 +22,9 @@ and the last test runs. Absent evidence reads `?`, never a guess.
 | Metric | Value |
 | --- | --- |
 | Source files | 3 |
-| Source lines | 340 |
+| Source lines | 345 |
 | Documentation files | 5 |
-| Documentation lines (authored) | 174 |
+| Documentation lines (authored) | 187 |
 | Tests executed (UT) | 20 |
 | Tests executed (ST) | 5 |
 | UT line coverage | 95% |

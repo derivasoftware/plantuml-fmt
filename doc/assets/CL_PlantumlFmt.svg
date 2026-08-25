@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 1178 848" width="1178" height="848" class="pr-diagram" role="img">
+<title>CL_PlantumlFmt</title>
+<style>
+  :root { color-scheme: light dark; }
+  .pr-diagram { font-family: var(--pr-font, ui-monospace, monospace); font-size: 12px; }
+  .pr-box rect { fill: var(--pr-box-fill, #fdfdf6); stroke: var(--pr-stroke, #3b3b33); }
+  .pr-container > rect { fill: var(--pr-container-fill, none); stroke: var(--pr-stroke, #3b3b33); stroke-dasharray: none; }
+  .pr-note rect { fill: var(--pr-note-fill, #fbf6d9); stroke: var(--pr-stroke, #3b3b33); }
+  text { fill: var(--pr-text, #1c1c14); }
+  .pr-header { font-weight: 600; }
+  .pr-abstract .pr-header { font-style: italic; }
+  .pr-sep { stroke: var(--pr-stroke, #3b3b33); }
+  .pr-edge { stroke: var(--pr-stroke, #3b3b33); fill: none; }
+  .pr-edge-realization, .pr-edge-dependency, .pr-edge-attachment { stroke-dasharray: 6 4; }
+</style>
+<defs>
+  <marker id="pr-tri" viewBox="0 0 14 12" refX="13" refY="6" markerWidth="14" markerHeight="12" orient="auto"><path d="M1,1 L13,6 L1,11 Z" fill="var(--pr-box-fill, #fdfdf6)" stroke="var(--pr-stroke, #3b3b33)"/></marker>
+  <marker id="pr-diamond-filled" viewBox="0 0 16 10" refX="15" refY="5" markerWidth="16" markerHeight="10" orient="auto"><path d="M1,5 L8,1 L15,5 L8,9 Z" fill="var(--pr-stroke, #3b3b33)"/></marker>
+  <marker id="pr-diamond" viewBox="0 0 16 10" refX="15" refY="5" markerWidth="16" markerHeight="10" orient="auto"><path d="M1,5 L8,1 L15,5 L8,9 Z" fill="var(--pr-box-fill, #fdfdf6)" stroke="var(--pr-stroke, #3b3b33)"/></marker>
+  <marker id="pr-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="var(--pr-stroke, #3b3b33)"/></marker>
+</defs>
+<g id="plantuml_fmt.formatter" class="pr-container pr-classifier-namespace"><rect x="28" y="50" width="1112" height="352"/><text class="pr-header" x="36" y="65">formatter</text></g>
+<g id="plantuml_fmt.rules" class="pr-container pr-classifier-namespace"><rect x="28" y="434" width="528" height="208"/><text class="pr-header" x="36" y="449">rules</text></g>
+<g id="plantuml_fmt.cli" class="pr-container pr-classifier-namespace"><rect x="28" y="674" width="528" height="136"/><text class="pr-header" x="36" y="689">cli</text></g>
+<g id="plantuml_fmt" class="pr-container pr-classifier-namespace"><rect x="10" y="10" width="1148" height="818"/><text class="pr-header" x="18" y="25">plantuml_fmt</text></g>
+<path class="pr-edge pr-edge-dependency" data-from="plantuml_fmt.formatter.FormatterModule" data-to="plantuml_fmt.rules.RulesModule" d="M584,384 L292,474" marker-end="url(#pr-arrow)"/>
+<path class="pr-edge pr-edge-dependency" data-from="plantuml_fmt.cli.CliModule" data-to="plantuml_fmt.formatter.FormatterModule" d="M292,714 L584,384" marker-end="url(#pr-arrow)"/>
+<g id="plantuml_fmt.formatter.FormatterModule" class="pr-box pr-classifier-class"><rect x="46" y="90" width="1076" height="294"/><text class="pr-header" x="56" y="112">FormatterModule</text><line class="pr-sep" x1="46" y1="122" x2="1122" y2="122"/><text x="56" y="134">+ format_bytes(src: bytes) : bytes</text><text x="56" y="152">+ format_text(src: str) : str</text><text x="56" y="170">- _get_parser() : Parser</text><text x="56" y="188">- _freeze(frozen: list[bool], first_row: int, last_row: int) : None</text><text x="56" y="206">- _child_row(node: Node, child_type: str) : int | None</text><text x="56" y="224">- _indent_block(node: Node, depth: list[int]) : None</text><text x="56" y="242">- _mark_block_edges(node: Node, openers: set[int], closers: set[int]) : None</text><text x="56" y="260">- _mark_frame_edges(node: Node, openers: set[int], closers: set[int]) : None</text><text x="56" y="278">- _collect(node: Node, depth: list[int], frozen: list[bool], rewrites: dict[int, Node], openers: set[int], closers: set[int]) : None</text><text x="56" y="296">- _indent_frame(node: Node, depth: list[int]) : None</text><text x="56" y="314">- _is_soft_blank(lines: list[bytes], frozen: list[bool], row: int) : bool</text><text x="56" y="332">- _neighbor(row: int, step: int, lines: list[bytes], frozen: list[bool]) : int</text><text x="56" y="350">- _keep_blank(row: int, lines: list[bytes], frozen: list[bool], openers: set[int], closers: set[int]) : bool</text><text x="56" y="368">- _rewrite(node: Node, src: bytes) : bytes | None</text></g>
+<g id="plantuml_fmt.rules.RulesModule" class="pr-box pr-classifier-class"><rect x="46" y="474" width="492" height="150"/><text class="pr-header" x="56" y="496">RulesModule</text><line class="pr-sep" x1="46" y1="506" x2="538" y2="506"/><text x="56" y="518">+ rewrite_relation(src: bytes, node: Node) : bytes | None</text><text x="56" y="536">+ rewrite_member(src: bytes, node: Node) : bytes | None</text><text x="56" y="554">- _rewrite_attribute(src: bytes, node: Node) : bytes | None</text><text x="56" y="572">- _rewrite_method(src: bytes, node: Node) : bytes | None</text><text x="56" y="590">- _single_line(node: Node) : bool</text><text x="56" y="608">- _text(src: bytes, node: Node) : bytes</text></g>
+<g id="plantuml_fmt.cli.CliModule" class="pr-box pr-classifier-class"><rect x="46" y="714" width="492" height="78"/><text class="pr-header" x="56" y="736">CliModule</text><line class="pr-sep" x1="46" y1="746" x2="538" y2="746"/><text x="56" y="758">+ iter_files(paths: Iterable[str]) : Iterator[pathlib.Path]</text><text x="56" y="776">+ main(argv: list[str] | None) : int</text></g>
+</svg>

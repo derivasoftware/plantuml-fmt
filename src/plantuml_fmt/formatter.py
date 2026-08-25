@@ -70,16 +70,14 @@ def _indent_frame(node: Node, depth: list[int]) -> None:
             depth[child.start_point[0]] -= 1
 
 
-def _mark_block_edges(node: Node, openers: set[int],
-                      closers: set[int]) -> None:
+def _mark_block_edges(node: Node, openers: set[int], closers: set[int]) -> None:
     openers.add(node.start_point[0])
     brace_row = _child_row(node, "}")
     if brace_row is not None:
         closers.add(brace_row)
 
 
-def _mark_frame_edges(node: Node, openers: set[int],
-                      closers: set[int]) -> None:
+def _mark_frame_edges(node: Node, openers: set[int], closers: set[int]) -> None:
     openers.add(node.start_point[0])
     end_row = _child_row(node, "end")
     if end_row is not None:
@@ -90,9 +88,14 @@ def _mark_frame_edges(node: Node, openers: set[int],
             closers.add(child.start_point[0])
 
 
-def _collect(node: Node, depth: list[int], frozen: list[bool],
-             rewrites: dict[int, Node], openers: set[int],
-             closers: set[int]) -> None:
+def _collect(
+    node: Node,
+    depth: list[int],
+    frozen: list[bool],
+    rewrites: dict[int, Node],
+    openers: set[int],
+    closers: set[int],
+) -> None:
     kind = node.type
     if kind in _BLOCKS:
         _indent_block(node, depth)
@@ -128,8 +131,7 @@ def _is_soft_blank(lines: list[bytes], frozen: list[bool], row: int) -> bool:
     return not lines[row].strip() and not frozen[row]
 
 
-def _neighbor(row: int, step: int, lines: list[bytes],
-              frozen: list[bool]) -> int:
+def _neighbor(row: int, step: int, lines: list[bytes], frozen: list[bool]) -> int:
     """Nearest non-blank row in the given direction, skipping soft blanks."""
     row += step
     while 0 <= row < len(lines) and _is_soft_blank(lines, frozen, row):
@@ -137,8 +139,13 @@ def _neighbor(row: int, step: int, lines: list[bytes],
     return row
 
 
-def _keep_blank(row: int, lines: list[bytes], frozen: list[bool],
-                openers: set[int], closers: set[int]) -> bool:
+def _keep_blank(
+    row: int,
+    lines: list[bytes],
+    frozen: list[bool],
+    openers: set[int],
+    closers: set[int],
+) -> bool:
     """v2 blank-line policy: a run of blank lines collapses to one, and
     blanks touching a block or frame edge disappear entirely. Frozen
     rows (opaque bodies) never reach this decision."""

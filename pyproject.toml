@@ -8,17 +8,17 @@ authors = [{ name = "dcoello-dev" }]
 requires-python = ">=3.10"
 dependencies = [
     "tree-sitter>=0.25",
-    "tree-sitter-plantuml @ git+https://gitlab.semantiqa.dev/deriva/plantuml/tree-sitter-plantuml.git@v0.8.0",
+    "tree-sitter-plantuml @ git+https://github.com/derivasoftware/tree-sitter-plantuml.git@v0.8.0",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = ["pytest", "pytest-cov", "coverage"]
 
 [project.scripts]
 plantuml-fmt = "plantuml_fmt.cli:main"
 
 [project.urls]
-Homepage = "https://gitlab.semantiqa.dev/deriva/plantuml/plantuml-fmt"
+Homepage = "https://github.com/derivasoftware/plantuml-fmt"
 
 [build-system]
 requires = ["setuptools>=68"]
@@ -26,3 +26,8 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+markers = [
+  "system: end-to-end invariant pass over a real diagram tree",
+]

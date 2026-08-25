@@ -12,7 +12,7 @@ from tree_sitter import Node
 
 
 def _text(src: bytes, node: Node) -> bytes:
-    return src[node.start_byte:node.end_byte]
+    return src[node.start_byte : node.end_byte]
 
 
 def _single_line(node: Node) -> bool:
@@ -90,9 +90,7 @@ def _rewrite_method(src: bytes, node: Node) -> bytes | None:
     rendered = b""
     if params is not None:
         pieces = [
-            _text(src, p).strip()
-            for p in params.children
-            if p.type == "parameter"
+            _text(src, p).strip() for p in params.children if p.type == "parameter"
         ]
         rendered = b", ".join(pieces)
     line = _text(src, name) + b"(" + rendered + b")"

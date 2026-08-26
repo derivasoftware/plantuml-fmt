@@ -1,5 +1,6 @@
-# CI — plantuml-fmt. The grammar dependency is a public GitHub git
-# package; pip clones it directly.
+# CI — plantuml-fmt. The manifest points the grammar dependency at the
+# public GitHub mirror; the insteadOf rewrite resolves it against this
+# GitLab's own project (same repo, local network, job-token auth).
 
 include:
   - project: deriva/infra/ci-templates
@@ -13,6 +14,13 @@ test:
   script:
     - |
       set -euo pipefail
+      # GitLab CI resolves the public GitHub dependency URLs against its
+      # own projects: same repos, local network, job-token auth. The
+      # public manifests keep pointing at the mirror.
+      export GIT_CONFIG_GLOBAL="$CI_PROJECT_DIR/.gitconfig-ci"
+      git config --file "$GIT_CONFIG_GLOBAL" \
+        url."https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/deriva/plantuml/".insteadOf \
+        "https://github.com/derivasoftware/"
       python3 -m venv .venv-ci
       ./.venv-ci/bin/pip install -q -e ".[dev]"
       mkdir -p test-results

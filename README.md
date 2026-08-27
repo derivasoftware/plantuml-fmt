@@ -1,9 +1,9 @@
 # plantuml-fmt
 
 <!-- folio: colophon --project plantuml-fmt --junit test-results/junit.xml --junit_st test-results/junit-st.xml --coverage_ut test-results/coverage-ut.xml --coverage_st test-results/coverage-st.xml -->
-![powered by: argos](https://img.shields.io/badge/powered%20by-argos-1f6feb) ![traced: 100%](https://img.shields.io/badge/traced-100%25-2ea44f) ![verified: 100%](https://img.shields.io/badge/verified-100%25-2ea44f) ![tests: 100%](https://img.shields.io/badge/tests-100%25-2ea44f) ![UT: 95%](https://img.shields.io/badge/UT-95%25-2ea44f) ![ST: 65%](https://img.shields.io/badge/ST-65%25-e05d44) ![diagnostics: 0](https://img.shields.io/badge/diagnostics-0-2ea44f)
+![powered by: argos](https://img.shields.io/badge/powered%20by-argos-1f6feb) ![traced: 91%](https://img.shields.io/badge/traced-91%25-2ea44f) ![verified: 100%](https://img.shields.io/badge/verified-100%25-2ea44f) ![tests: 100%](https://img.shields.io/badge/tests-100%25-2ea44f) ![UT: 95%](https://img.shields.io/badge/UT-95%25-2ea44f) ![ST: 64%](https://img.shields.io/badge/ST-64%25-e05d44) ![diagnostics: 2](https://img.shields.io/badge/diagnostics-2-dfb317)
 
-> **plantuml-fmt** is powered by **argos**. **folio** generates this documentation from the repository's model: 10 requirements · 10 verifications · 0 constraints. Quality: 100% traced to code · 100% verified · 100% tests passing · 95% UT coverage · 65% ST coverage.
+> **plantuml-fmt** is powered by **argos**. **folio** generates this documentation from the repository's model: 11 requirements · 11 verifications · 0 constraints. Quality: 91% traced to code · 100% verified · 100% tests passing · 95% UT coverage · 64% ST coverage.
 <!-- /folio -->
 
 Canonical formatter for [PlantUML](https://plantuml.com/), built on
@@ -21,7 +21,7 @@ below is generated from the manifest and the latest tag:
 
 <!-- folio: install -->
 ```bash
-pip install git+https://github.com/derivasoftware/plantuml-fmt.git@v0.3.3
+pip install git+https://github.com/derivasoftware/plantuml-fmt.git@v0.3.4
 ```
 
 Or from a clone: `git clone https://github.com/derivasoftware/plantuml-fmt && pip install ./plantuml-fmt`.

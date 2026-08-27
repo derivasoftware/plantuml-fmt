@@ -93,8 +93,12 @@ def _rewrite_method(src: bytes, node: Node) -> bytes | None:
             _text(src, p).strip() for p in params.children if p.type == "parameter"
         ]
         rendered = b", ".join(pieces)
-    line = _text(src, name) + b"(" + rendered + b")"
     type_ = node.child_by_field_name("type")
+    # C++ style: return type on the left (cpp_return_type node)
+    if type_ is not None and type_.type == "cpp_return_type":
+        return _text(src, type_) + b" " + _text(src, name) + b"(" + rendered + b")"
+    # PlantUML canonical: name(params) : type
+    line = _text(src, name) + b"(" + rendered + b")"
     if type_ is not None:
         line += b" : " + _text(src, type_).strip()
     return line

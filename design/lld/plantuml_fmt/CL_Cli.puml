@@ -5,11 +5,12 @@
 !startsub CliModule
 
 namespace plantuml_fmt.cli {
-  class "<<module>>" as CliModule {
+  class iter_files <<function>> {
     + iter_files(paths: Iterable[str]) : Iterator[pathlib.Path]
+  }
+  class main <<function>> {
     + main(argv: list[str] | None) : int
   }
-  CliModule ..> plantuml_fmt.formatter.FormatterModule
 }
 
 !endsub

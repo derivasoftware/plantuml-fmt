@@ -93,8 +93,20 @@ def _rewrite_method(src: bytes, node: Node) -> bytes | None:
             _text(src, p).strip() for p in params.children if p.type == "parameter"
         ]
         rendered = b", ".join(pieces)
-    line = _text(src, name) + b"(" + rendered + b")"
+    call = _text(src, name) + b"(" + rendered + b")"
     type_ = node.child_by_field_name("type")
+    suffix = node.child_by_field_name("suffix")
+    # C++ signature: the return type sits left of the name and the line
+    # keeps that shape; trailing qualifiers re-emit with single spacing.
+    if type_ is not None and type_.type == "cpp_return_type":
+        line = _text(src, type_).strip() + b" " + call
+        if suffix is not None:
+            line += b" " + b" ".join(_text(src, suffix).split())
+        return line
+    # PlantUML canonical: name(params) [cv-qualifier] : type
+    line = call
+    if suffix is not None:
+        line += b" " + b" ".join(_text(src, suffix).split())
     if type_ is not None:
         line += b" : " + _text(src, type_).strip()
     return line

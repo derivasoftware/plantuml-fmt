@@ -1,0 +1,22 @@
+verification:
+  id: VER-00011-1
+  req_id: REQ-00011-1
+  title: Unit tests pin the C++ signature directions through the formatter
+  description: >
+    tests/test_cpp_members.py holds seven cases, each asserting
+    idempotency alongside its shape: the left return type stays left
+    (plain and nested-template), the deleted assignment keeps its form
+    with single spacing, the cv-qualifier stays between the parens and
+    the canonical colon, a callable parameter's inner parentheses do
+    not split the list, the canonical colon form still normalizes its
+    spacing, and the unclosed-template line passes through lossless.
+  method: test
+  test_ids:
+    - tests/test_cpp_members.py::test_left_return_type_is_preserved
+    - tests/test_cpp_members.py::test_nested_template_return_survives_whole
+    - tests/test_cpp_members.py::test_deleted_assignment_keeps_form_and_spacing
+    - tests/test_cpp_members.py::test_cv_qualifier_sits_before_the_canonical_colon
+    - tests/test_cpp_members.py::test_callable_parameter_inner_parens_do_not_split
+    - tests/test_cpp_members.py::test_canonical_colon_form_still_normalizes
+    - tests/test_cpp_members.py::test_unclosed_template_falls_through_lossless
+  status: DRAFT

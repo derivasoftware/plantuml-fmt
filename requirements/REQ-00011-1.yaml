@@ -20,7 +20,7 @@ requirement:
     the direction is style; preserving it is what keeps the formatter
     safe over foreign C++ corpora.
   owner: dcoello-dev
-  status: DRAFT
+  status: APPROVED
   asil: QM
   parent_ids:
     - SREQ-00001-1

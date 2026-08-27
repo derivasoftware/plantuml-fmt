@@ -41,11 +41,11 @@ _cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_
 </details>
 
 <details>
-<summary><code>CL_Rules</code> · traces to <code>REQ-00003-4</code> <code>REQ-00007-2</code> <code>REQ-00008-1</code></summary>
+<summary><code>CL_Rules</code> · traces to <code>REQ-00003-4</code> <code>REQ-00007-2</code> <code>REQ-00008-1</code> <code>REQ-00011-1</code></summary>
 <ul>
 <li>source: <code>design/lld/plantuml_fmt/CL_Rules.puml</code></li>
 <li>implemented in: <code>src/plantuml_fmt/rules.py</code></li>
-<li>verified by: <code>tests/test_formatter.py</code> (3), <code>tests/test_system_corpus.py</code> (1), <code>tests/test_v2.py</code> (3)</li>
+<li>verified by: <code>tests/test_cpp_members.py</code> (7), <code>tests/test_formatter.py</code> (3), <code>tests/test_system_corpus.py</code> (1), <code>tests/test_v2.py</code> (3)</li>
 </ul>
 <p><img alt="CL_Rules" src="assets/CL_Rules.svg"></p>
 </details>

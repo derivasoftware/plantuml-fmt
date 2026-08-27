@@ -19,4 +19,4 @@ verification:
     - tests/test_cpp_members.py::test_callable_parameter_inner_parens_do_not_split
     - tests/test_cpp_members.py::test_canonical_colon_form_still_normalizes
     - tests/test_cpp_members.py::test_unclosed_template_falls_through_lossless
-  status: DRAFT
+  status: APPROVED

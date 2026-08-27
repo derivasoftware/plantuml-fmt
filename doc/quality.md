@@ -28,6 +28,6 @@ and the last test runs. Absent evidence reads `?`, never a guess.
 | Tests executed (UT) | 27 |
 | Tests executed (ST) | 5 |
 | UT line coverage | 95% |
-| ST line coverage | 64% |
+| ST line coverage | 58% |
 | argos diagnostics | 0 |
 <!-- /folio -->

@@ -4,8 +4,6 @@ keep single spacing, the cv-qualifier stays between the parens and the
 canonical colon, and a callable parameter's inner parentheses never
 split the list. Malformed C++ falls through untouched — lossless."""
 
-import pytest
-
 from plantuml_fmt.formatter import format_text
 
 

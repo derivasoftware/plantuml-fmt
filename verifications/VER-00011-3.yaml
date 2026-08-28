@@ -1,8 +1,11 @@
 verification:
-  id: VER-00011-2
+  id: VER-00011-3
   req_id: REQ-00011-1
   title: Unit tests pin the C++ signature directions through the formatter
   description: >
+    Revision (3): with grammar 0.9.6 a template comma inside a parameter
+    no longer splits it, so the parameter text round-trips verbatim; one
+    case pins it.
     Revision (2): five cases pin the method-level template clause of
     grammar 0.9.5 — preserved behind a C++ return type, behind a plain
     type, in the canonical colon form, with a nested return type and a
@@ -16,6 +19,7 @@ verification:
     spacing, and the unclosed-template line passes through lossless.
   method: test
   test_ids:
+    - tests/test_cpp_members.py::test_template_commas_keep_one_parameter
     - tests/test_cpp_members.py::test_left_return_type_is_preserved
     - tests/test_cpp_members.py::test_nested_template_return_survives_whole
     - tests/test_cpp_members.py::test_deleted_assignment_keeps_form_and_spacing

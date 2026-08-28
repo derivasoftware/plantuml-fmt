@@ -52,3 +52,31 @@ def test_unclosed_template_falls_through_lossless():
     out = format_text(src)
     assert "".join(out.split()) == "".join(src.split())
     assert format_text(out) == out
+
+
+# Method-level template parameters (grammar 0.9.5, tree-sitter-plantuml#5):
+# the clause between the name and the parenthesis is a token like any
+# other — it survives, in both directions, and the line stays idempotent.
+def test_template_clause_survives_behind_cpp_return_type():
+    line = "+ Widget* create<Args>(Config config)"
+    assert _member(line) == line
+
+
+def test_template_clause_survives_behind_plain_type():
+    assert _member("+ T get<T>(int index)") == "+ T get<T>(int index)"
+    assert _member("+ void add<T>(T item)") == "+ void add<T>(T item)"
+
+
+def test_template_clause_survives_in_canonical_colon_form():
+    assert _member("+ get<T>(int index) : T") == "+ get<T>(int index) : T"
+
+
+def test_template_clause_with_nested_return_and_qualifier():
+    # the parameter's inner comma takes the canonical ", " spacing — a
+    # whitespace normalization, every token kept
+    line = "+ std::vector<int> pick<K, V>(const Map<K,V>& m) const"
+    assert _member(line) == "+ std::vector<int> pick<K, V>(const Map<K, V>& m) const"
+
+
+def test_empty_template_clause_falls_through_lossless():
+    assert _member("+ T get<>(int index)") == "+ T get<>(int index)"

@@ -45,7 +45,7 @@ _cl · `design/lld/plantuml_fmt/CL_PlantumlFmt.puml`_
 <ul>
 <li>source: <code>design/lld/plantuml_fmt/CL_Rules.puml</code></li>
 <li>implemented in: <code>src/plantuml_fmt/rules.py</code></li>
-<li>verified by: <code>tests/test_cpp_members.py</code> (7), <code>tests/test_formatter.py</code> (3), <code>tests/test_system_corpus.py</code> (1), <code>tests/test_v2.py</code> (3)</li>
+<li>verified by: <code>tests/test_cpp_members.py</code> (12), <code>tests/test_formatter.py</code> (3), <code>tests/test_system_corpus.py</code> (1), <code>tests/test_v2.py</code> (3)</li>
 </ul>
 <p><img alt="CL_Rules" src="assets/CL_Rules.svg"></p>
 </details>

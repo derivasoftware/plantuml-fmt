@@ -21,7 +21,7 @@ below is generated from the manifest and the latest tag:
 
 <!-- folio: install -->
 ```bash
-pip install git+https://github.com/derivasoftware/plantuml-fmt.git@v0.3.6
+pip install git+https://github.com/derivasoftware/plantuml-fmt.git@v0.3.7
 ```
 
 Or from a clone: `git clone https://github.com/derivasoftware/plantuml-fmt && pip install ./plantuml-fmt`.

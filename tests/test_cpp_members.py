@@ -72,10 +72,15 @@ def test_template_clause_survives_in_canonical_colon_form():
 
 
 def test_template_clause_with_nested_return_and_qualifier():
-    # the parameter's inner comma takes the canonical ", " spacing — a
-    # whitespace normalization, every token kept
+    # grammar 0.9.6 (#6): the template comma inside a parameter no longer
+    # splits it, so the parameter text is kept verbatim, spacing included
     line = "+ std::vector<int> pick<K, V>(const Map<K,V>& m) const"
-    assert _member(line) == "+ std::vector<int> pick<K, V>(const Map<K, V>& m) const"
+    assert _member(line) == line
+
+
+def test_template_commas_keep_one_parameter():
+    line = "+ lookup(std::map<K, std::vector<int>> m, std::pair<A, B> p) : int"
+    assert _member(line) == line
 
 
 def test_empty_template_clause_falls_through_lossless():

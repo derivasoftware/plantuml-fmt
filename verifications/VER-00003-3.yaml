@@ -1,6 +1,6 @@
 verification:
   id: VER-00003-3
-  req_id: REQ-00003-4
+  req_id: REQ-00003-5
   title: Property test and system corpus pass compare whitespace-squashed content
   description: >
     Squashing every space and tab out of each line yields identical

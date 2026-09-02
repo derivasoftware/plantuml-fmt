@@ -1,8 +1,12 @@
 verification:
-  id: VER-00011-3
+  id: VER-00011-4
   req_id: REQ-00011-1
   title: Unit tests pin the C++ signature directions through the formatter
   description: >
+    Revision (4): grammar 0.9.7 lets a plain identifier type bind the
+    method path without a template clause; two cases pin that it stays
+    left as written and that the degenerate dual-type line keeps both
+    sides.
     Revision (3): with grammar 0.9.6 a template comma inside a parameter
     no longer splits it, so the parameter text round-trips verbatim; one
     case pins it.
@@ -32,4 +36,6 @@ verification:
     - tests/test_cpp_members.py::test_template_clause_survives_in_canonical_colon_form
     - tests/test_cpp_members.py::test_template_clause_with_nested_return_and_qualifier
     - tests/test_cpp_members.py::test_empty_template_clause_falls_through_lossless
+    - tests/test_cpp_members.py::test_plain_return_type_stays_left
+    - tests/test_cpp_members.py::test_both_directions_on_one_line_lose_nothing
   status: APPROVED

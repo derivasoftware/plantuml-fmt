@@ -85,3 +85,15 @@ def test_template_commas_keep_one_parameter():
 
 def test_empty_template_clause_falls_through_lossless():
     assert _member("+ T get<>(int index)") == "+ T get<>(int index)"
+
+
+# Grammar 0.9.7 (tree-sitter-plantuml#7): a plain identifier type binds
+# the method path even without a template clause — its direction is
+# preserved like any C++ signature, and a degenerate line carrying a
+# type on each side of the name loses neither.
+def test_plain_return_type_stays_left():
+    assert _member("+ void start()") == "+ void start()"
+
+
+def test_both_directions_on_one_line_lose_nothing():
+    assert _member("+ void f() : int") == "+ void f() : int"

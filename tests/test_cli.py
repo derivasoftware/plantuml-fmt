@@ -17,3 +17,17 @@ def test_check_then_write_then_clean(tmp_path, capsys):
     assert f.read_text() == "@startuml\nclass Foo\n@enduml\n"
 
     assert main(["--check", str(tmp_path)]) == 0
+
+
+def test_member_style_flag_converts(tmp_path):
+    f = tmp_path / "m.puml"
+    f.write_text("@startuml\nclass C {\n  + void start()\n}\n@enduml\n")
+
+    # default preserve: nothing to change
+    assert main(["--check", str(tmp_path)]) == 0
+
+    assert main(["--member-style", "canonical", str(tmp_path)]) == 0
+    assert "+ start() : void" in f.read_text()
+
+    assert main(["--member-style", "cpp", str(tmp_path)]) == 0
+    assert "+ void start()" in f.read_text()

@@ -1,0 +1,33 @@
+requirement:
+  id: REQ-00012-1
+  title: The formatter shall convert method direction only on explicit request and without losing a field
+  description: >
+    On an explicitly requested member style, the formatter shall
+    re-emit method signatures in the requested direction — canonical
+    (name(parameters) : type) or C++ (type name(parameters)) — moving
+    the type across the name with every other field intact: template
+    parameters, parameters, and trailing qualifiers. A conversion shall
+    stand only when the converted line re-parses to the identical
+    signature; a signature the target direction cannot express shall
+    keep its written direction. Attributes and prose members shall
+    never be converted. The default remains preserve: without the
+    explicit request, written direction is kept (REQ-00011-1) and the
+    whitespace-only charter (REQ-00003-5) holds.
+  rationale: >
+    Grammar 0.9.7 (tree-sitter-plantuml issue #7) made both member
+    directions fully structural — type, name, template_parameters,
+    parameters and suffix are fields — so direction conversion becomes
+    a field reorder instead of text surgery, and the re-parse guard
+    makes it safe by construction: the grammar that will read the
+    output is the arbiter of what the output may say. Opt-in because
+    direction is content, not whitespace — PlantUML renders the member
+    text as written, and generated C++ trees have a legitimate claim to
+    the C++ direction. Normalizing brings stable diffs on mixed
+    corpora and direction-insensitive signature comparison downstream
+    (the plantuml-lsp drift lint).
+  owner: dcoello-dev
+  status: DRAFT
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+  tags: [members, style]

@@ -1,7 +1,7 @@
 @startuml CL_Formatter
 ' requirement REQ-00001-1
 ' requirement REQ-00002-1
-' requirement REQ-00003-4
+' requirement REQ-00003-5
 ' requirement REQ-00004-1
 ' requirement REQ-00009-1
 ' requirement REQ-00010-1
@@ -10,10 +10,10 @@
 
 namespace plantuml_fmt.formatter {
   class format_bytes <<function>> {
-    + format_bytes(src: bytes) : bytes
+    + format_bytes(src: bytes, member_style: str) : bytes
   }
   class format_text <<function>> {
-    + format_text(src: str) : str
+    + format_text(src: str, member_style: str) : str
   }
 }
 

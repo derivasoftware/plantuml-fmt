@@ -1,0 +1,32 @@
+verification:
+  id: VER-00012-1
+  req_id: REQ-00012-1
+  title: Unit tests pin the opt-in direction conversion and its refusals
+  description: >
+    tests/test_member_style.py holds twelve cases, each asserting
+    idempotency alongside its shape: canonical moves plain and
+    qualified C++ types right (template parameters and the suffix
+    riding along, the suffix staying before the colon); cpp moves
+    plain and qualified types left; the re-parse guard refuses a
+    bracketed type that cannot stand left of the name and an
+    operator-overload collision; untyped methods are stable in both
+    styles; attributes, prose members and the degenerate dual-type
+    line are never converted; and the default remains preserve.
+    tests/test_cli.py::test_member_style_flag_converts pins the
+    --member-style flag end to end through check and write modes.
+  method: test
+  test_ids:
+    - tests/test_member_style.py::test_canonical_moves_plain_type_right
+    - tests/test_member_style.py::test_canonical_moves_cpp_type_right
+    - tests/test_member_style.py::test_canonical_keeps_suffix_before_the_colon
+    - tests/test_member_style.py::test_cpp_moves_plain_type_left
+    - tests/test_member_style.py::test_cpp_moves_qualified_type_left
+    - tests/test_member_style.py::test_cpp_refuses_a_type_that_cannot_stand_left
+    - tests/test_member_style.py::test_cpp_refuses_operator_names
+    - tests/test_member_style.py::test_untyped_method_is_stable_in_both_styles
+    - tests/test_member_style.py::test_attributes_are_never_converted
+    - tests/test_member_style.py::test_prose_members_pass_through
+    - tests/test_member_style.py::test_degenerate_dual_type_is_not_converted
+    - tests/test_member_style.py::test_default_stays_preserve
+    - tests/test_cli.py::test_member_style_flag_converts
+  status: DRAFT

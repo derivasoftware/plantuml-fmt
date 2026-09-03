@@ -29,4 +29,4 @@ verification:
     - tests/test_member_style.py::test_degenerate_dual_type_is_not_converted
     - tests/test_member_style.py::test_default_stays_preserve
     - tests/test_cli.py::test_member_style_flag_converts
-  status: DRAFT
+  status: APPROVED

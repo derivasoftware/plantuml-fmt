@@ -1,7 +1,8 @@
 """Whitespace-canonicalizing PlantUML formatter (v2).
 
 Three layers of canon, all whitespace-only so the formatter stays
-lossless by construction and idempotent:
+lossless by construction and idempotent (the opt-in member_style is the
+one sanctioned exception, REQ-00003-5 / REQ-00012-1 — see rules.py):
 
 - indentation: two spaces per enclosing block or sequence frame;
 - intra-line: relations and members rebuilt from the CST with single
@@ -14,24 +15,19 @@ Opaque content — note bodies, raw-block bodies, block-comment
 continuation lines — is preserved byte-identical (frozen rows).
 """
 
-import tree_sitter_plantuml
-from tree_sitter import Language, Node, Parser
+from tree_sitter import Node
 
-from plantuml_fmt.rules import rewrite_member, rewrite_relation
+from plantuml_fmt.rules import (
+    MEMBER_STYLES,
+    get_parser,
+    rewrite_member,
+    rewrite_relation,
+)
 
 INDENT = b"  "
 
 # Braced blocks whose inner lines gain one indentation level.
 _BLOCKS = {"entity_body", "package_block", "namespace_block", "together_block"}
-
-_parser = None
-
-
-def _get_parser() -> Parser:
-    global _parser
-    if _parser is None:
-        _parser = Parser(Language(tree_sitter_plantuml.language()))
-    return _parser
 
 
 def _freeze(frozen: list[bool], first_row: int, last_row: int) -> None:
@@ -121,10 +117,10 @@ def _collect(
         _collect(child, depth, frozen, rewrites, openers, closers)
 
 
-def _rewrite(node: Node, src: bytes) -> bytes | None:
+def _rewrite(node: Node, src: bytes, member_style: str) -> bytes | None:
     if node.type == "relation":
         return rewrite_relation(src, node)
-    return rewrite_member(src, node)
+    return rewrite_member(src, node, member_style)
 
 
 def _is_soft_blank(lines: list[bytes], frozen: list[bool], row: int) -> bool:
@@ -159,8 +155,10 @@ def _keep_blank(
     return not (row > 0 and _is_soft_blank(lines, frozen, row - 1))
 
 
-def format_bytes(src: bytes) -> bytes:
-    tree = _get_parser().parse(src)
+def format_bytes(src: bytes, member_style: str = "preserve") -> bytes:
+    if member_style not in MEMBER_STYLES:
+        raise ValueError(f"unknown member_style: {member_style!r}")
+    tree = get_parser().parse(src)
     lines = src.split(b"\n")
     depth = [0] * len(lines)
     frozen = [False] * len(lines)
@@ -181,12 +179,12 @@ def format_bytes(src: bytes) -> bytes:
             continue
         node = rewrites.get(row)
         if node is not None:
-            rebuilt = _rewrite(node, src)
+            rebuilt = _rewrite(node, src, member_style)
             if rebuilt is not None:
                 stripped = rebuilt
         out.append(INDENT * depth[row] + stripped)
     return b"\n".join(out)
 
 
-def format_text(src: str) -> str:
-    return format_bytes(src.encode()).decode()
+def format_text(src: str, member_style: str = "preserve") -> str:
+    return format_bytes(src.encode(), member_style).decode()

@@ -26,7 +26,7 @@ requirement:
     corpora and direction-insensitive signature comparison downstream
     (the plantuml-lsp drift lint).
   owner: dcoello-dev
-  status: DRAFT
+  status: APPROVED
   asil: QM
   parent_ids:
     - SREQ-00001-1

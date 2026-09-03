@@ -32,12 +32,20 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="write nothing; exit 1 listing files that would change",
     )
+    parser.add_argument(
+        "--member-style",
+        choices=("preserve", "canonical", "cpp"),
+        default="preserve",
+        help="method direction: preserve as written (default), or convert "
+        "to canonical 'name(args) : type' / cpp 'type name(args)' when the "
+        "converted line re-parses to the identical signature",
+    )
     args = parser.parse_args(argv)
 
     changed = []
     for path in iter_files(args.paths):
         source = path.read_bytes()
-        formatted = format_bytes(source)
+        formatted = format_bytes(source, args.member_style)
         if formatted != source:
             changed.append(path)
             if not args.check:

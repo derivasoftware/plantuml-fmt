@@ -27,7 +27,29 @@ from plantuml_fmt.rules import (
 INDENT = b"  "
 
 # Braced blocks whose inner lines gain one indentation level.
-_BLOCKS = {"entity_body", "package_block", "namespace_block", "together_block"}
+_BLOCKS = {
+    "entity_body",
+    "package_block",
+    "namespace_block",
+    "together_block",
+    "partition_block",
+}
+
+# Keyword-closed blocks (grammar 0.10): the direct child that closes
+# the block and the clause children whose head line stays at block
+# depth, like a frame's else. `repeat` appears twice in a repeat_block
+# (opener and `repeat while` closer): the last one is the closer.
+_KEYWORD_BLOCKS = {
+    "frame_block": ("end", ("else_clause",)),
+    "if_block": ("endif", ("elseif_clause", "else_clause")),
+    "while_block": ("endwhile", ()),
+    "repeat_block": ("repeat", ()),
+    "switch_block": ("endswitch", ("case_clause",)),
+    "fork_block": ("end", ("fork_again",)),
+    "split_block": ("end", ("split_again",)),
+    "box_block": ("end box", ()),
+    "reference": ("end ref", ()),
+}
 
 
 def _freeze(frozen: list[bool], first_row: int, last_row: int) -> None:
@@ -54,15 +76,17 @@ def _indent_block(node: Node, depth: list[int]) -> None:
         depth[row] += 1
 
 
-def _indent_frame(node: Node, depth: list[int]) -> None:
-    # frame bodies gain a level; else/end lines stay at frame depth
-    end_row = _child_row(node, "end")
+def _indent_frame(
+    node: Node, depth: list[int], closer: str, clauses: tuple[str, ...]
+) -> None:
+    # bodies gain a level; clause heads and the closer stay at block depth
+    end_row = _child_row(node, closer)
     if end_row is None:
         end_row = node.end_point[0]
     for row in range(node.start_point[0] + 1, end_row):
         depth[row] += 1
     for child in node.children:
-        if child.type == "else_clause":
+        if child.type in clauses:
             depth[child.start_point[0]] -= 1
 
 
@@ -73,13 +97,19 @@ def _mark_block_edges(node: Node, openers: set[int], closers: set[int]) -> None:
         closers.add(brace_row)
 
 
-def _mark_frame_edges(node: Node, openers: set[int], closers: set[int]) -> None:
+def _mark_frame_edges(
+    node: Node,
+    openers: set[int],
+    closers: set[int],
+    closer: str,
+    clauses: tuple[str, ...],
+) -> None:
     openers.add(node.start_point[0])
-    end_row = _child_row(node, "end")
+    end_row = _child_row(node, closer)
     if end_row is not None:
         closers.add(end_row)
     for child in node.children:
-        if child.type == "else_clause":
+        if child.type in clauses:
             openers.add(child.start_point[0])
             closers.add(child.start_point[0])
 
@@ -96,9 +126,15 @@ def _collect(
     if kind in _BLOCKS:
         _indent_block(node, depth)
         _mark_block_edges(node, openers, closers)
-    elif kind == "frame_block":
-        _indent_frame(node, depth)
-        _mark_frame_edges(node, openers, closers)
+    elif kind in _KEYWORD_BLOCKS:
+        closer, clauses = _KEYWORD_BLOCKS[kind]
+        _indent_frame(node, depth, closer, clauses)
+        _mark_frame_edges(node, openers, closers, closer, clauses)
+        if kind == "reference":
+            # the block body is opaque text, like a note
+            end_row = _child_row(node, closer)
+            if end_row is not None:
+                _freeze(frozen, node.start_point[0] + 1, end_row - 1)
     elif kind in ("relation", "member"):
         rewrites[node.start_point[0]] = node
     elif kind == "note_statement":

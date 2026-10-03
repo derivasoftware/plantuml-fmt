@@ -17,7 +17,7 @@ import pytest
 from plantuml_fmt.formatter import format_bytes
 
 SKIP_DIRS = {"node_modules", ".venv", ".git", "build"}
-_DEFAULT = str(pathlib.Path(__file__).resolve().parent.parent / "design")
+_DEFAULT = str(pathlib.Path(__file__).resolve().parents[2] / "design")
 
 
 def _corpus() -> list[pathlib.Path]:

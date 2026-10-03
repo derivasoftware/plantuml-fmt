@@ -23,19 +23,19 @@ verification:
     spacing, and the unclosed-template line passes through lossless.
   method: test
   test_ids:
-    - tests/test_cpp_members.py::test_template_commas_keep_one_parameter
-    - tests/test_cpp_members.py::test_left_return_type_is_preserved
-    - tests/test_cpp_members.py::test_nested_template_return_survives_whole
-    - tests/test_cpp_members.py::test_deleted_assignment_keeps_form_and_spacing
-    - tests/test_cpp_members.py::test_cv_qualifier_sits_before_the_canonical_colon
-    - tests/test_cpp_members.py::test_callable_parameter_inner_parens_do_not_split
-    - tests/test_cpp_members.py::test_canonical_colon_form_still_normalizes
-    - tests/test_cpp_members.py::test_unclosed_template_falls_through_lossless
-    - tests/test_cpp_members.py::test_template_clause_survives_behind_cpp_return_type
-    - tests/test_cpp_members.py::test_template_clause_survives_behind_plain_type
-    - tests/test_cpp_members.py::test_template_clause_survives_in_canonical_colon_form
-    - tests/test_cpp_members.py::test_template_clause_with_nested_return_and_qualifier
-    - tests/test_cpp_members.py::test_empty_template_clause_falls_through_lossless
-    - tests/test_cpp_members.py::test_plain_return_type_stays_left
-    - tests/test_cpp_members.py::test_both_directions_on_one_line_lose_nothing
+    - tests/integration/test_cpp_members.py::test_template_commas_keep_one_parameter
+    - tests/integration/test_cpp_members.py::test_left_return_type_is_preserved
+    - tests/integration/test_cpp_members.py::test_nested_template_return_survives_whole
+    - tests/integration/test_cpp_members.py::test_deleted_assignment_keeps_form_and_spacing
+    - tests/integration/test_cpp_members.py::test_cv_qualifier_sits_before_the_canonical_colon
+    - tests/integration/test_cpp_members.py::test_callable_parameter_inner_parens_do_not_split
+    - tests/integration/test_cpp_members.py::test_canonical_colon_form_still_normalizes
+    - tests/integration/test_cpp_members.py::test_unclosed_template_falls_through_lossless
+    - tests/integration/test_cpp_members.py::test_template_clause_survives_behind_cpp_return_type
+    - tests/integration/test_cpp_members.py::test_template_clause_survives_behind_plain_type
+    - tests/integration/test_cpp_members.py::test_template_clause_survives_in_canonical_colon_form
+    - tests/integration/test_cpp_members.py::test_template_clause_with_nested_return_and_qualifier
+    - tests/integration/test_cpp_members.py::test_empty_template_clause_falls_through_lossless
+    - tests/integration/test_cpp_members.py::test_plain_return_type_stays_left
+    - tests/integration/test_cpp_members.py::test_both_directions_on_one_line_lose_nothing
   status: APPROVED

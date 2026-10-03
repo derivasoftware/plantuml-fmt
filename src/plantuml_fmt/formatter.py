@@ -114,6 +114,23 @@ def _mark_frame_edges(
             closers.add(child.start_point[0])
 
 
+def _freeze_opaque(node: Node, kind: str, frozen: list[bool]) -> None:
+    """Freeze the lines whose content is opaque text: a note body, a raw
+    block body and the continuation lines of a block comment."""
+    if kind == "note_statement":
+        end_row = _child_row(node, "end note")
+        if end_row is not None:
+            _freeze(frozen, node.start_point[0] + 1, end_row - 1)
+    elif kind == "raw_block":
+        tail_row = _child_row(node, "raw_line")
+        if tail_row is not None:
+            _freeze(frozen, node.start_point[0] + 1, tail_row - 1)
+    elif kind == "block_comment":
+        # continuation lines live inside the token; the first line's
+        # leading whitespace is outside it and stays reindentable
+        _freeze(frozen, node.start_point[0] + 1, node.end_point[0])
+
+
 def _collect(
     node: Node,
     depth: list[int],
@@ -137,18 +154,8 @@ def _collect(
                 _freeze(frozen, node.start_point[0] + 1, end_row - 1)
     elif kind in ("relation", "member"):
         rewrites[node.start_point[0]] = node
-    elif kind == "note_statement":
-        end_row = _child_row(node, "end note")
-        if end_row is not None:
-            _freeze(frozen, node.start_point[0] + 1, end_row - 1)
-    elif kind == "raw_block":
-        tail_row = _child_row(node, "raw_line")
-        if tail_row is not None:
-            _freeze(frozen, node.start_point[0] + 1, tail_row - 1)
-    elif kind == "block_comment":
-        # continuation lines live inside the token; the first line's
-        # leading whitespace is outside it and stays reindentable
-        _freeze(frozen, node.start_point[0] + 1, node.end_point[0])
+    else:
+        _freeze_opaque(node, kind, frozen)
     for child in node.children:
         _collect(child, depth, frozen, rewrites, openers, closers)
 

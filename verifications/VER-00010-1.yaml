@@ -6,8 +6,8 @@ verification:
     v2 tests cover run collapse, edge stripping and frozen note bodies
   method: test
   test_ids:
-    - tests/test_v2.py::test_collapses_blank_runs_to_one
-    - tests/test_v2.py::test_strips_blanks_at_block_edges
-    - tests/test_v2.py::test_strips_blanks_at_frame_edges
-    - tests/test_v2.py::test_keeps_single_blank_between_top_level_statements
-    - tests/test_v2.py::test_note_bodies_keep_their_blank_lines
+    - tests/integration/test_it_v2.py::test_collapses_blank_runs_to_one
+    - tests/integration/test_it_v2.py::test_strips_blanks_at_block_edges
+    - tests/integration/test_it_v2.py::test_strips_blanks_at_frame_edges
+    - tests/integration/test_it_v2.py::test_keeps_single_blank_between_top_level_statements
+    - tests/integration/test_it_v2.py::test_note_bodies_keep_their_blank_lines

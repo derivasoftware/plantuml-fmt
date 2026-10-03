@@ -6,4 +6,4 @@ verification:
     Golden test pins the canonical indentation
   method: test
   test_ids:
-    - tests/test_formatter.py::test_golden
+    - tests/integration/test_formatter.py::test_golden

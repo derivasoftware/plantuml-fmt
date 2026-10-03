@@ -2,7 +2,7 @@
 
 import pathlib
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
+ROOT = pathlib.Path(__file__).resolve().parents[2]
 
 
 def test_precommit_hook_declared():

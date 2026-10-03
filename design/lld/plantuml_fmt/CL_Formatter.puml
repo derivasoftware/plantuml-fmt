@@ -15,6 +15,42 @@ namespace plantuml_fmt.formatter {
   class format_text <<function>> {
     + format_text(src: str, member_style: str) : str
   }
+  class _child_row <<function>> {
+    - _child_row(node: Node, child_type: str) : int | None
+  }
+  class _collect <<function>> {
+    - _collect(node: Node, depth: list[int], frozen: list[bool], rewrites: dict[int, Node], openers: set[int], closers: set[int]) : None
+  }
+  class _freeze <<function>> {
+    - _freeze(frozen: list[bool], first_row: int, last_row: int) : None
+  }
+  class _indent_block <<function>> {
+    - _indent_block(node: Node, depth: list[int]) : None
+  }
+  class _indent_frame <<function>> {
+    - _indent_frame(node: Node, depth: list[int], closer: str, clauses: tuple[str, ...]) : None
+  }
+  class _is_soft_blank <<function>> {
+    - _is_soft_blank(lines: list[bytes], frozen: list[bool], row: int) : bool
+  }
+  class _keep_blank <<function>> {
+    - _keep_blank(row: int, lines: list[bytes], frozen: list[bool], openers: set[int], closers: set[int]) : bool
+  }
+  class _mark_block_edges <<function>> {
+    - _mark_block_edges(node: Node, openers: set[int], closers: set[int]) : None
+  }
+  class _mark_frame_edges <<function>> {
+    - _mark_frame_edges(node: Node, openers: set[int], closers: set[int], closer: str, clauses: tuple[str, ...]) : None
+  }
+  class _neighbor <<function>> {
+    - _neighbor(row: int, step: int, lines: list[bytes], frozen: list[bool]) : int
+  }
+  class _rewrite <<function>> {
+    - _rewrite(node: Node, src: bytes, member_style: str) : bytes | None
+  }
+  class _freeze_opaque <<function>> {
+    - _freeze_opaque(node: Node, kind: str, frozen: list[bool]) : None
+  }
 }
 
 !endsub

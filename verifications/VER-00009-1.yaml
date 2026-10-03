@@ -6,4 +6,4 @@ verification:
     Frame indentation test pins body and terminator depths
   method: test
   test_ids:
-    - tests/test_formatter.py::test_frame_bodies_indent
+    - tests/integration/test_formatter.py::test_frame_bodies_indent

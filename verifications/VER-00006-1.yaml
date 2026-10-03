@@ -6,4 +6,4 @@ verification:
     Hook test pins the pre-commit declaration
   method: test
   test_ids:
-    - tests/test_hooks.py::test_precommit_hook_declared
+    - tests/integration/test_hooks.py::test_precommit_hook_declared

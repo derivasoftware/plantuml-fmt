@@ -11,6 +11,6 @@ verification:
     PLANTUML_FMT_CORPUS.
   method: test
   test_ids:
-    - tests/test_formatter.py::test_only_whitespace_changes
-    - tests/test_system_corpus.py::test_corpus_file_formats_lossless_and_idempotent
+    - tests/integration/test_formatter.py::test_only_whitespace_changes
+    - tests/integration/test_system_corpus.py::test_corpus_file_formats_lossless_and_idempotent
   status: APPROVED

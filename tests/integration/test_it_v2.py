@@ -1,14 +1,12 @@
-"""v2 rules: blank-line policy, adjacency-preserving relation rebuilds,
-and output that always re-parses at least as cleanly as the input."""
+"""Integration tests: the functions the verifications register, which drive
+the product at its boundary; the rest of tests/unit/test_v2.py stays unit.
+"""
 
 from plantuml_fmt.formatter import format_text
 
 
 def fmt(src: str) -> str:
     return format_text(src)
-
-
-# ── Blank-line policy ────────────────────────────────────────────────────────
 
 
 def test_collapses_blank_runs_to_one():
@@ -38,9 +36,6 @@ def test_note_bodies_keep_their_blank_lines():
     assert fmt(src) == src
 
 
-# ── Adjacency-preserving rebuilds ────────────────────────────────────────────
-
-
 def test_role_slash_cardinalities_stay_glued():
     src = '@startuml\nUser   "owner"/1   --   "0..n"/items   Item\n@enduml\n'
     assert fmt(src) == '@startuml\nUser "owner"/1 -- "0..n"/items Item\n@enduml\n'
@@ -54,26 +49,3 @@ def test_activation_shorthand_spacing():
 def test_boundary_messages_normalize():
     src = "@startuml\n[->   Bob   :   hello\nBob   ->]   :   bye\n@enduml\n"
     assert fmt(src) == "@startuml\n[-> Bob : hello\nBob ->] : bye\n@enduml\n"
-
-
-# ── Round-trip safety ────────────────────────────────────────────────────────
-
-
-def test_formatted_output_is_idempotent_and_lossless():
-    src = (
-        "@startuml\n"
-        'participant "Front End" as FE << (C,#ADD1B2) UI >>\n'
-        "\n\n"
-        "User -> FE ++ : click\n"
-        "FE --> User -- : ack\n"
-        'Shop [customerId] ---> "1" Customer\n'
-        "alt cached\n\n  FE -> FE : hit\n\nend\n"
-        "@enduml\n"
-    )
-    once = fmt(src)
-    assert fmt(once) == once
-
-    def strip(text: str) -> str:
-        return "".join(text.split())
-
-    assert strip(once) == strip(src)

@@ -6,4 +6,4 @@ verification:
     Member spacing test pins visibility, params and types
   method: test
   test_ids:
-    - tests/test_formatter.py::test_member_spacing_normalizes
+    - tests/integration/test_formatter.py::test_member_spacing_normalizes

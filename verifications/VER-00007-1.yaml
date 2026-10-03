@@ -6,7 +6,7 @@ verification:
     Relation spacing test pins the canonical form
   method: test
   test_ids:
-    - tests/test_formatter.py::test_relation_spacing_normalizes
-    - tests/test_v2.py::test_role_slash_cardinalities_stay_glued
-    - tests/test_v2.py::test_activation_shorthand_spacing
-    - tests/test_v2.py::test_boundary_messages_normalize
+    - tests/integration/test_formatter.py::test_relation_spacing_normalizes
+    - tests/integration/test_it_v2.py::test_role_slash_cardinalities_stay_glued
+    - tests/integration/test_it_v2.py::test_activation_shorthand_spacing
+    - tests/integration/test_it_v2.py::test_boundary_messages_normalize

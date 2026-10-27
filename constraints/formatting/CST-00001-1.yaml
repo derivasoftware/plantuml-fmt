@@ -1,0 +1,13 @@
+constraint:
+  id: CST-00001-1
+  bok_ids:
+    - BOK-00262-1
+  title: Every rewrite shall change only whitespace, blank lines included
+  description: >
+    Every rewrite the formatter applies shall change only whitespace, blank lines included: spacing anywhere in a rewritable line and the blank lines between statements may change, and every non-whitespace byte is preserved in order. Opaque content remains byte-identical. The sole exception is an explicitly requested member direction style (REQ-00012-1), which may move a method's type across its name, never losing a field and never by default.
+  rationale: >
+    Losslessness by construction: rewriters re-emit the CST tokens with canonical whitespace between them and refuse any line they cannot parse cleanly. It holds for every style rule, present and future, so it governs them rather than owning a unit; it is how the formatter keeps SREQ-00002-2 (formatting never changes what a diagram says).
+  status: APPROVED
+  asil: QM
+  tags:
+    - style

@@ -7,7 +7,7 @@ rewriter returns None whenever the line contains anything it cannot
 faithfully rebuild (opaque payloads, multi-line spans); the caller then
 leaves the line's own spacing untouched.
 
-The one sanctioned exception to whitespace-only (REQ-00003-5) is the
+The one sanctioned exception to whitespace-only (CST-00001-1) is the
 opt-in member style (REQ-00012-1): a method signature may be re-emitted
 in a requested direction — canonical ``name(args) : type`` or C++
 ``type name(args)`` — moving the type across the name with every other

@@ -12,7 +12,7 @@ requirement:
     keep its written direction. Attributes and prose members shall
     never be converted. The default remains preserve: without the
     explicit request, written direction is kept (REQ-00011-1) and the
-    whitespace-only charter (REQ-00003-5) holds.
+    whitespace-only constraint (CST-00001-1) holds.
   rationale: >
     Grammar 0.9.7 (tree-sitter-plantuml issue #7) made both member
     directions fully structural — type, name, template_parameters,
@@ -30,4 +30,6 @@ requirement:
   asil: QM
   parent_ids:
     - SREQ-00001-1
+    - SREQ-00002-2
+    - SREQ-00003-1
   tags: [members, style]

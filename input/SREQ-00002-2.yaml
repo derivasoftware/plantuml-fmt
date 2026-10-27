@@ -1,0 +1,22 @@
+requirement:
+  id: SREQ-00002-2
+  title: Formatting shall never change what a diagram says
+  description: >
+    Formatting shall never change what a diagram says: every element,
+    relation, label and opaque body the author wrote reaches the output
+    with its meaning intact, so the formatted diagram renders the same
+    model as its source.
+  rationale: >
+    Meaning preservation is what makes a formatter safe to run
+    unattended in pre-commit. How it is guaranteed is a design decision
+    (CST-00001-1: rewrites touch only whitespace), not part of the need;
+    the revision lifts the requirement from the v0 mechanism to the
+    stakeholder's ask.
+  owner: dcoello-dev
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+  tags:
+    - language-tooling
+    - data-stewardship

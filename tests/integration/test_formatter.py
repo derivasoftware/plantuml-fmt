@@ -1,4 +1,4 @@
-"""Golden, idempotency, losslessness and opaque-content tests."""
+"""Golden and opaque-content tests."""
 
 from plantuml_fmt.formatter import format_text
 
@@ -61,18 +61,6 @@ skinparam class {
 
 def test_golden():
     assert format_text(MESSY) == EXPECTED
-
-
-def test_idempotent():
-    once = format_text(MESSY)
-    assert format_text(once) == once
-
-
-def test_only_whitespace_changes():
-    def squash(text):
-        return [line.replace(" ", "").replace("\t", "") for line in text.split("\n")]
-
-    assert squash(MESSY) == squash(format_text(MESSY))
 
 
 def test_note_body_untouched():

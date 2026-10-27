@@ -50,6 +50,9 @@ namespace plantuml_fmt.formatter {
   class _freeze_opaque <<function>> {
     - _freeze_opaque(node: Node, kind: str, frozen: list[bool]) : None
   }
+  class _spans_line <<function>> {
+    - _spans_line(node: Node, row: int, line: bytes) : bool
+  }
 }
 
 _rewrite ..> rewrite_member

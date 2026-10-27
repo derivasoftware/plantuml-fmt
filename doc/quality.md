@@ -24,10 +24,10 @@ and the last test runs. Absent evidence reads `?`, never a guess.
 | Source files | 14 |
 | Source lines | 579 |
 | Documentation files | 5 |
-| Documentation lines (authored) | 187 |
+| Documentation lines (authored) | 217 |
 | Tests executed (UT) | 130 |
 | Tests executed (ST) | 22 |
 | UT line coverage | 97% |
 | ST line coverage | 79% |
-| argos diagnostics | 2 |
+| argos diagnostics | 0 |
 <!-- /folio -->

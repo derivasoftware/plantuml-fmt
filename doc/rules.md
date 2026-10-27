@@ -2,11 +2,16 @@
 
 Every rule is a versioned REQ in this repo's GDD; the style only ever
 changes by revising those artefacts. Two invariants bound every rule,
-present and future:
+present and future, as constraints of the rewrite category:
 
-- **Lossless**: only whitespace of statement lines changes; every
-  non-whitespace byte is preserved in order.
-- **Idempotent**: `fmt(fmt(x)) == fmt(x)` (tested).
+- **Lossless** (CST-00001-1): only whitespace of statement lines changes;
+  every non-whitespace byte is preserved in order. A statement a rewrite
+  cannot rebuild faithfully, or a line it does not cover whole, keeps its
+  bytes (CST-00002-1).
+- **Idempotent**: `fmt(fmt(x)) == fmt(x)`.
+
+Both are system needs of the formatter (SREQ-00002-2, SREQ-00003-1),
+demonstrated over a real diagram tree by the system pass.
 
 ## v1 rules
 
@@ -79,8 +84,22 @@ class B
 tokens the grammar binds by immediate adjacency: `"owner"/items` role
 suffixes stay glued — a space there changes what re-parses.
 
-Both invariants are asserted in the wild on demand:
+**R7 — member direction (opt-in).** `--member-style canonical` moves a
+method's type after the name (`name(args) : type`), `--member-style cpp`
+before it (`type name(args)`), with template parameters, parameters and
+trailing qualifiers intact. A conversion stands only when the converted
+line re-parses to the identical signature; otherwise the member keeps its
+written direction. Attributes and prose members are never converted, and
+the default, `preserve`, changes no direction. The one sanctioned
+exception to whitespace-only.
+
+```
++ void start()   --member-style canonical →   + start() : void
+```
+
+Both invariants are asserted in the wild on demand by the system pass,
+over this repository's design tree or any corpus you name:
 
 ```bash
-.venv/bin/python scripts/eval_wild_corpus.py <roots>   # lossy: 0  unstable: 0
+PLANTUML_FMT_CORPUS=<root>:<root> .venv/bin/python -m pytest -m system
 ```

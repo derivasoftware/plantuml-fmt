@@ -1,0 +1,15 @@
+requirement:
+  id: REQ-00014-1
+  title: The formatter shall emit every line once from the pass's record
+  description: >
+    The formatter shall emit every line once from the pass's record: re-indented two spaces per recorded level, rewritten when its relation or member covers every non-whitespace byte of it, dropped when it is a blank the policy removes, and passed through byte-identical when frozen.
+  rationale: >
+    formatter/format.py (with the shared row helpers in rows.py) is the pass itself, the use case the layers plug into; REQ-00013-1 owns the module and groups the pass with the four layers, so it cites no chapter of its own (BOK-00321-2, PUML-100).
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - REQ-00013-1
+    - SREQ-00002-2
+    - SREQ-00003-1
+  tags:
+    - style

@@ -1,0 +1,24 @@
+verification:
+  id: VER-00014-1
+  req_id: REQ-00014-1
+  title: The whole pass, driven through format_text over every layer
+  description: >
+    The formatter integration tests drive format_text end to end: the golden
+    diagram exercises every layer at once; block and frame bodies indent,
+    note, raw-block and block-comment bodies pass through byte-identical,
+    and the blank-line policy collapses runs and strips block and frame
+    edges while a note keeps its own blank lines.
+  method: test
+  test_ids:
+    - "tests/integration/test_formatter.py::test_golden"
+    - "tests/integration/test_formatter.py::test_block_bodies_indent_two_spaces_per_level"
+    - "tests/integration/test_formatter.py::test_frame_bodies_indent"
+    - "tests/integration/test_formatter.py::test_note_body_untouched"
+    - "tests/integration/test_formatter.py::test_raw_block_body_untouched"
+    - "tests/integration/test_formatter.py::test_block_comment_continuation_untouched"
+    - "tests/integration/test_it_v2.py::test_collapses_blank_runs_to_one"
+    - "tests/integration/test_it_v2.py::test_strips_blanks_at_block_edges"
+    - "tests/integration/test_it_v2.py::test_strips_blanks_at_frame_edges"
+    - "tests/integration/test_it_v2.py::test_keeps_single_blank_between_top_level_statements"
+    - "tests/integration/test_it_v2.py::test_note_bodies_keep_their_blank_lines"
+  status: APPROVED

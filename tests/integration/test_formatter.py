@@ -95,6 +95,12 @@ def test_member_spacing_normalizes():
     assert "  - balance : int\n" in out
 
 
+def test_block_bodies_indent_two_spaces_per_level():
+    src = "@startuml\nnamespace n {\nclass A {\n+x : int\n}\n}\n@enduml\n"
+    out = format_text(src)
+    assert "namespace n {\n  class A {\n    + x : int\n  }\n}\n" in out
+
+
 def test_frame_bodies_indent():
     src = "@startuml\nloop each\ncli -> repo\nend\n@enduml\n"
     out = format_text(src)

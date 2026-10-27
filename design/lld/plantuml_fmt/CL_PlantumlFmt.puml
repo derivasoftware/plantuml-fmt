@@ -9,7 +9,7 @@
 ' requirement REQ-00012-1
 
 !startsub FormatterModule
-!includesub ./CL_Formatter.puml!FormatterModule
+!includesub ./formatter/CL_Formatter.puml!FormatterModule
 !endsub
 
 !startsub RulesModule

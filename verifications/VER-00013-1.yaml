@@ -1,0 +1,8 @@
+verification:
+  id: VER-00013-1
+  req_id: REQ-00013-1
+  title: "Review: the formatter module is realised by its pass and its four layers of canon"
+  description: >
+    Verified through its children by review of containment: every unit of plantuml_fmt.formatter is owned by exactly one child (the pass REQ-00014-1; blocks REQ-00001-1, frames REQ-00009-1, opaque REQ-00004-1, blanks REQ-00010-1), each verified by tests that drive its own unit; the module holds nothing outside them.
+  method: review
+  status: APPROVED

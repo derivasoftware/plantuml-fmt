@@ -1,9 +1,14 @@
 verification:
   id: VER-00009-1
   req_id: REQ-00009-1
-  title: Frame indentation test pins body and terminator depths
+  title: Frames over a real tree indent their bodies, clause heads at frame depth
   description: >
-    Frame indentation test pins body and terminator depths
+    The frame tests drive formatter.frames over parsed loops, alt/else and
+    if chains: bodies gain a level, clause heads and closers stay at the
+    frame depth, and an else row is both an opener and a closer.
   method: test
   test_ids:
-    - tests/integration/test_formatter.py::test_frame_bodies_indent
+    - "tests/integration/formatter/test_frames.py::test_a_loop_body_gains_a_level"
+    - "tests/integration/formatter/test_frames.py::test_an_alt_else_head_stays_at_frame_depth"
+    - "tests/integration/formatter/test_frames.py::test_an_if_chain_indents_its_branches"
+    - "tests/integration/formatter/test_frames.py::test_else_rows_are_both_edges"

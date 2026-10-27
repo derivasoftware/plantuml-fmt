@@ -198,6 +198,16 @@ def _keep_blank(
     return not (row > 0 and _is_soft_blank(lines, frozen, row - 1))
 
 
+def _spans_line(node: Node, row: int, line: bytes) -> bool:
+    """Whether the node holds every non-whitespace byte of its line: a rewrite
+    re-emits the node alone, so a line it does not cover keeps its bytes."""
+    if node.start_point[1] != len(line) - len(line.lstrip(b" \t")):
+        return False
+    if node.end_point[0] != row:
+        return True
+    return not line[node.end_point[1] :].strip()
+
+
 def format_bytes(src: bytes, member_style: str = "preserve") -> bytes:
     if member_style not in MEMBER_STYLES:
         raise ValueError(f"unknown member_style: {member_style!r}")
@@ -221,7 +231,7 @@ def format_bytes(src: bytes, member_style: str = "preserve") -> bytes:
                 out.append(b"")
             continue
         node = rewrites.get(row)
-        if node is not None:
+        if node is not None and _spans_line(node, row, line):
             rebuilt = _rewrite(node, src, member_style)
             if rebuilt is not None:
                 stripped = rebuilt

@@ -11,7 +11,7 @@ tests with no failures.
 | SREQ | Title | Implemented | UT | ST |
 | --- | --- | --- | --- | --- |
 | `SREQ-00001-1` | The tool shall format PlantUML sources into a canonical style | ✓ | ✓ | ~ |
-| `SREQ-00002-1` | The formatter shall preserve every input token byte-identically | ✓ | ✓ | ✓ |
+| `SREQ-00002-2` | Formatting shall never change what a diagram says | ✓ | ✓ | ✓ |
 | `SREQ-00003-1` | The formatter shall emit identical output when reformatting its own output | ✓ | ✓ | ✓ |
 | `SREQ-00004-1` | The formatter shall pass opaque content through verbatim | ✓ | ✓ | ✗ |
 | `SREQ-00005-1` | The tool shall provide a command-line interface with check and write modes | ✓ | ✓ | ✗ |
@@ -30,8 +30,8 @@ the verifications.
 | SREQ | Requirements | Diagrams | Classes | UT | ST | Verifications |
 | --- | --- | --- | --- | --- | --- | --- |
 | `SREQ-00001-1` | `REQ-00001-1`<br>`REQ-00007-2`<br>`REQ-00008-1`<br>`REQ-00009-1`<br>`REQ-00010-1`<br>`REQ-00011-1`<br>`REQ-00012-1` | `CL_Formatter`<br>`CL_PlantumlFmt`<br>`CL_Rules`<br>`HLD_PlantumlFmt` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 40 | 0 | `VER-00001-1`<br>`VER-00007-1`<br>`VER-00008-1`<br>`VER-00009-1`<br>`VER-00010-1`<br>`VER-00011-4`<br>`VER-00012-1` |
-| `SREQ-00002-1` | `REQ-00003-5` | `CL_Formatter`<br>`CL_PlantumlFmt`<br>`CL_Rules` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 1 | 1 | `VER-00003-3` |
-| `SREQ-00003-1` | `REQ-00002-1` | `CL_Formatter`<br>`CL_PlantumlFmt` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 1 | 1 | `VER-00002-2` |
+| `SREQ-00002-2` | `REQ-00001-1`<br>`REQ-00007-2`<br>`REQ-00008-1`<br>`REQ-00009-1`<br>`REQ-00010-1`<br>`REQ-00011-1`<br>`REQ-00012-1` | `CL_Formatter`<br>`CL_PlantumlFmt`<br>`CL_Rules` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 40 | 0 | `VER-00001-1`<br>`VER-00007-1`<br>`VER-00008-1`<br>`VER-00009-1`<br>`VER-00010-1`<br>`VER-00011-4`<br>`VER-00012-1` |
+| `SREQ-00003-1` | `REQ-00001-1`<br>`REQ-00007-2`<br>`REQ-00008-1`<br>`REQ-00009-1`<br>`REQ-00010-1`<br>`REQ-00011-1`<br>`REQ-00012-1` | `CL_Formatter`<br>`CL_PlantumlFmt`<br>`CL_Rules` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 40 | 0 | `VER-00001-1`<br>`VER-00007-1`<br>`VER-00008-1`<br>`VER-00009-1`<br>`VER-00010-1`<br>`VER-00011-4`<br>`VER-00012-1` |
 | `SREQ-00004-1` | `REQ-00004-1` | `CL_Formatter`<br>`CL_PlantumlFmt` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 3 | 0 | `VER-00004-1` |
 | `SREQ-00005-1` | `REQ-00005-1` | `CL_Cli`<br>`CL_PlantumlFmt` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 1 | 0 | `VER-00005-1` |
 | `SREQ-00006-1` | `REQ-00006-1` | `CL_Cli`<br>`CL_PlantumlFmt` | `plantuml_fmt.cli`<br>`plantuml_fmt.formatter`<br>`plantuml_fmt.rules` | 1 | 0 | `VER-00006-1` |

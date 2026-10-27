@@ -14,6 +14,8 @@ requirement:
   asil: QM
   parent_ids:
     - SREQ-00001-1
+    - SREQ-00002-2
+    - SREQ-00003-1
   tags:
     - blank-lines
     - style

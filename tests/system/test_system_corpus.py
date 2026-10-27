@@ -1,4 +1,4 @@
-"""System pass (REQ-00003-4): the two invariants over a real diagram tree.
+"""System pass (SREQ-00002-2, SREQ-00003-1): both invariants over a diagram tree.
 
 Every .puml under the corpus roots must format lossless (non-whitespace
 bytes preserved in order) and idempotent (a second pass changes nothing).

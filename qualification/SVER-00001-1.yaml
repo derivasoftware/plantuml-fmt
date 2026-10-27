@@ -1,0 +1,11 @@
+verification:
+  id: SVER-00001-1
+  req_id: SREQ-00002-2
+  title: The golden diagram and the system corpus keep every non-whitespace byte in order
+  description: >
+    Squashing every space and tab out of each line yields identical sequences for input and output on the golden diagram, and every diagram in the repository's design tree (or any corpus named by PLANTUML_FMT_CORPUS) keeps its non-whitespace bytes in order. Byte order of the non-whitespace content is a sufficient check that the meaning survived.
+  method: test
+  test_ids:
+    - tests/system/test_golden_invariants.py::test_only_whitespace_changes
+    - tests/system/test_system_corpus.py::test_corpus_file_formats_lossless_and_idempotent
+  status: APPROVED

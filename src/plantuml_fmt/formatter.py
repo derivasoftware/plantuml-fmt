@@ -2,7 +2,7 @@
 
 Three layers of canon, all whitespace-only so the formatter stays
 lossless by construction and idempotent (the opt-in member_style is the
-one sanctioned exception, REQ-00003-5 / REQ-00012-1 — see rules.py):
+one sanctioned exception, CST-00001-1 / REQ-00012-1 — see rules.py):
 
 - indentation: two spaces per enclosing block or sequence frame;
 - intra-line: relations and members rebuilt from the CST with single

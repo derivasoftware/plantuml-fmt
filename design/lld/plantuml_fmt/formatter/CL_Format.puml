@@ -6,7 +6,9 @@
 !includesub ./CL_Blocks.puml!Blocks
 !includesub ./CL_Frames.puml!Frames
 !includesub ./CL_Opaque.puml!Opaque
-!includesub ../CL_Rules.puml!RulesModule
+!includesub ../rules/CL_Reading.puml!Reading
+!includesub ../rules/CL_Relations.puml!Relations
+!includesub ../rules/CL_Members.puml!Members
 !includesub ./CL_Rows.puml!Rows
 
 namespace plantuml_fmt.formatter.format {

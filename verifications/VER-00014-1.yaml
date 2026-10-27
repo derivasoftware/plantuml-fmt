@@ -21,4 +21,9 @@ verification:
     - "tests/integration/test_it_v2.py::test_strips_blanks_at_frame_edges"
     - "tests/integration/test_it_v2.py::test_keeps_single_blank_between_top_level_statements"
     - "tests/integration/test_it_v2.py::test_note_bodies_keep_their_blank_lines"
+    - "tests/integration/test_formatter.py::test_relation_spacing_normalizes"
+    - "tests/integration/test_formatter.py::test_member_spacing_normalizes"
+    - "tests/integration/test_it_v2.py::test_role_slash_cardinalities_stay_glued"
+    - "tests/integration/test_it_v2.py::test_activation_shorthand_spacing"
+    - "tests/integration/test_it_v2.py::test_boundary_messages_normalize"
   status: APPROVED

@@ -7,3 +7,4 @@ verification:
   method: test
   test_ids:
     - tests/integration/test_cli.py::test_check_then_write_then_clean
+    - "tests/integration/test_cli.py::test_member_style_flag_converts"

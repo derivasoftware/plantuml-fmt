@@ -1,0 +1,16 @@
+@startuml CL_Attributes
+' requirement REQ-00017-1
+
+!startsub Attributes
+!includesub ./CL_Reading.puml!Reading
+
+namespace plantuml_fmt.rules.attributes {
+  class rewrite_attribute <<function>> {
+    + rewrite_attribute(src: bytes, node: Node) : bytes | None
+  }
+}
+
+rewrite_attribute ..> text
+!endsub
+
+@enduml

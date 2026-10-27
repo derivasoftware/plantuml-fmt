@@ -1,0 +1,16 @@
+requirement:
+  id: REQ-00018-1
+  title: A member shall re-emit as its visibility and modifiers, then its attribute or method rebuilt
+  description: >
+    A member shall re-emit as its visibility and modifiers with single spaces, then its attribute or method rebuilt; only a method may change direction, and only on a requested member style, so attributes and prose members are never converted and the default keeps the written direction.
+  rationale: >
+    rules/members.py, the member's head and the dispatch to attributes and methods (BOK-00321-2 walk, PUML-100).
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - REQ-00008-1
+    - SREQ-00002-2
+    - SREQ-00003-1
+  tags:
+    - rewrite
+    - style

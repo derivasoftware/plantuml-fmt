@@ -29,7 +29,7 @@ requirement:
   status: APPROVED
   asil: QM
   parent_ids:
-    - SREQ-00001-1
+    - REQ-00008-1
     - SREQ-00002-2
     - SREQ-00003-1
-  tags: [members, style]
+  tags: [members, style, rewrite]

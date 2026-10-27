@@ -1,0 +1,24 @@
+@startuml CL_Direction
+' requirement REQ-00012-1
+
+!startsub Direction
+!includesub ./CL_Reading.puml!Reading
+!includesub ./CL_Signature.puml!Signature
+
+namespace plantuml_fmt.rules.direction {
+  class convert <<function>> {
+    + convert(sig: dict, member_style: str) : bytes | None
+  }
+  class converts_faithfully <<function>> {
+    + converts_faithfully(candidate: bytes, want: tuple) : bool
+  }
+}
+
+convert ..> emit_method
+convert ..> signature_key
+converts_faithfully ..> get_parser
+converts_faithfully ..> method_signature
+converts_faithfully ..> signature_key
+!endsub
+
+@enduml

@@ -1,0 +1,16 @@
+requirement:
+  id: REQ-00017-1
+  title: "An attribute shall re-emit as name : type, a free-text member kept as written"
+  description: >
+    An attribute shall re-emit as its name, then a canonical colon and its type when it has one; a free-text member is an opaque payload and is not rebuilt.
+  rationale: >
+    rules/attributes.py, one characteristic of the member category (BOK-00321-2 walk, PUML-100).
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - REQ-00008-1
+    - SREQ-00002-2
+    - SREQ-00003-1
+  tags:
+    - rewrite
+    - style

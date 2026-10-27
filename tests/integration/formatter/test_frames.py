@@ -2,12 +2,12 @@
 level deeper, clause heads and closers at the frame's depth."""
 
 from plantuml_fmt.formatter.frames import KEYWORD_BLOCKS, indent_frame, mark_frame_edges
-from plantuml_fmt.rules import get_parser
+from tests.integration._grammar import parse
 
 
 def _frame_depths(src: bytes) -> list[int]:
     depth = [0] * len(src.split(b"\n"))
-    stack = [get_parser().parse(src).root_node]
+    stack = [parse(src).root_node]
     while stack:
         node = stack.pop()
         if node.type in KEYWORD_BLOCKS:
@@ -35,7 +35,7 @@ def test_an_if_chain_indents_its_branches():
 def test_else_rows_are_both_edges():
     src = b"@startuml\nalt ok\nA -> B\nelse no\nB -> A\nend\n@enduml\n"
     openers, closers = set(), set()
-    stack = [get_parser().parse(src).root_node]
+    stack = [parse(src).root_node]
     while stack:
         node = stack.pop()
         if node.type in KEYWORD_BLOCKS:

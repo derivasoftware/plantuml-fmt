@@ -1,0 +1,10 @@
+@startuml CL_Rules
+' requirement REQ-00015-1
+
+!startsub RulesModule
+!includesub ./CL_Reading.puml!Reading
+!includesub ./CL_Relations.puml!Relations
+!includesub ./CL_MemberRules.puml!MemberRules
+!endsub
+
+@enduml

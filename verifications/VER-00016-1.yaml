@@ -1,0 +1,14 @@
+verification:
+  id: VER-00016-1
+  req_id: REQ-00016-1
+  title: The grammar instance and node reading, driven directly
+  description: >
+    The parser tests take the shared grammar instance, read a diagram without error and read nodes back: their bytes, and whether a statement fits one line.
+  method: test
+  test_ids:
+    - tests/integration/rules/test_reading.py::test_every_caller_shares_one_grammar_instance
+    - tests/integration/rules/test_reading.py::test_the_grammar_reads_a_diagram_without_error
+    - tests/integration/rules/test_reading.py::test_a_node_reads_back_its_own_bytes
+    - tests/integration/rules/test_reading.py::test_a_statement_with_its_newline_still_fits_one_line
+    - tests/integration/rules/test_reading.py::test_a_block_spanning_rows_does_not
+  status: APPROVED

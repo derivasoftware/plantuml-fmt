@@ -3,12 +3,12 @@ block-comment continuations and a ref body are frozen; their edges are not."""
 
 from plantuml_fmt.formatter.frames import KEYWORD_BLOCKS
 from plantuml_fmt.formatter.opaque import freeze_opaque, freeze_reference_body
-from plantuml_fmt.rules import get_parser
+from tests.integration._grammar import parse
 
 
 def _frozen(src: bytes) -> list[int]:
     frozen = [False] * len(src.split(b"\n"))
-    stack = [get_parser().parse(src).root_node]
+    stack = [parse(src).root_node]
     while stack:
         node = stack.pop()
         if node.type == "reference":

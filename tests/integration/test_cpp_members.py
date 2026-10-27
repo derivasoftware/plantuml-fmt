@@ -2,16 +2,35 @@
 (REQ-00011-1): the left return type stays left, trailing qualifiers
 keep single spacing, the cv-qualifier stays between the parens and the
 canonical colon, and a callable parameter's inner parentheses never
-split the list. Malformed C++ falls through untouched — lossless."""
+split the list. Malformed C++ falls through untouched — lossless.
 
-from plantuml_fmt.formatter import format_text
+The tests drive the method rewrite itself (rules.methods) over a parsed
+class body; the member's visibility is carried over as written."""
+
+from plantuml_fmt.rules.methods import rewrite_method
+from tests.integration._grammar import parse
+
+
+def _rewrite(line: str) -> str:
+    src = f"@startuml\nclass C {{\n  {line}\n}}\n@enduml\n".encode()
+    stack = [parse(src).root_node]
+    while stack:
+        node = stack.pop()
+        if node.type == "method":
+            out = rewrite_method(src, node)
+            if out is None:
+                return line
+            line_start = src.rfind(b"\n", 0, node.start_byte) + 1
+            head = b" ".join(src[line_start : node.start_byte].split())
+            return ((head + b" ") if head else b"").decode() + out.decode()
+        stack.extend(node.children)
+    return line  # the grammar left it raw: nothing to rewrite
 
 
 def _member(line: str) -> str:
-    src = f"@startuml\nclass C {{\n  {line}\n}}\n@enduml\n"
-    out = format_text(src)
-    assert format_text(out) == out, "idempotency"
-    return out.splitlines()[2].strip()
+    out = _rewrite(line)
+    assert _rewrite(out) == out, "idempotency"
+    return out
 
 
 def test_left_return_type_is_preserved():
@@ -48,10 +67,8 @@ def test_canonical_colon_form_still_normalizes():
 
 def test_unclosed_template_falls_through_lossless():
     line = "+ std::map<std::string broken()"
-    src = f"@startuml\nclass C {{\n  {line}\n}}\n@enduml\n"
-    out = format_text(src)
-    assert "".join(out.split()) == "".join(src.split())
-    assert format_text(out) == out
+    out = _member(line)
+    assert "".join(out.split()) == "".join(line.split())
 
 
 # Method-level template parameters (grammar 0.9.5, tree-sitter-plantuml#5):

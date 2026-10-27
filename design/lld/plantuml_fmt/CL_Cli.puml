@@ -3,6 +3,7 @@
 ' requirement REQ-00006-1
 
 !startsub CliModule
+!includesub ./CL_Formatter.puml!FormatterModule
 
 namespace plantuml_fmt.cli {
   class iter_files <<function>> {
@@ -13,6 +14,7 @@ namespace plantuml_fmt.cli {
   }
 }
 
+main ..> format_bytes
 !endsub
 
 @enduml

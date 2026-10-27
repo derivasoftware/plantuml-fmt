@@ -7,6 +7,7 @@
 ' requirement REQ-00010-1
 
 !startsub FormatterModule
+!includesub ./CL_Rules.puml!RulesModule
 
 namespace plantuml_fmt.formatter {
   class format_bytes <<function>> {
@@ -53,6 +54,9 @@ namespace plantuml_fmt.formatter {
   }
 }
 
+_rewrite ..> rewrite_member
+_rewrite ..> rewrite_relation
+format_bytes ..> get_parser
 !endsub
 
 @enduml

@@ -1,0 +1,44 @@
+@startuml CL_Format
+' requirement REQ-00014-1
+
+!startsub Format
+!includesub ./CL_Blanks.puml!Blanks
+!includesub ./CL_Blocks.puml!Blocks
+!includesub ./CL_Frames.puml!Frames
+!includesub ./CL_Opaque.puml!Opaque
+!includesub ../rules/CL_Reading.puml!Reading
+!includesub ../rules/CL_Relations.puml!Relations
+!includesub ../rules/CL_Members.puml!Members
+!includesub ./CL_Rows.puml!Rows
+
+namespace plantuml_fmt.formatter.format {
+  class format_bytes <<function>> {
+    + format_bytes(src: bytes, member_style: str) : bytes
+  }
+  class collect <<function>> {
+    + collect(node: Node, depth: list[int], frozen: list[bool], rewrites: dict[int, Node], openers: set[int], closers: set[int]) : None
+  }
+  class format_text <<function>> {
+    + format_text(src: str, member_style: str) : str
+  }
+  class rewrite <<function>> {
+    + rewrite(node: Node, src: bytes, member_style: str) : bytes | None
+  }
+  class spans_line <<function>> {
+    + spans_line(node: Node, row: int, line: bytes) : bool
+  }
+}
+
+collect ..> indent_block
+collect ..> mark_block_edges
+collect ..> indent_frame
+collect ..> mark_frame_edges
+collect ..> freeze_opaque
+collect ..> freeze_reference_body
+format_bytes ..> get_parser
+format_bytes ..> keep_blank
+rewrite ..> rewrite_member
+rewrite ..> rewrite_relation
+!endsub
+
+@enduml

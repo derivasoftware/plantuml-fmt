@@ -1,0 +1,17 @@
+@startuml CL_Rows
+' requirement REQ-00014-1
+
+!startsub Rows
+
+namespace plantuml_fmt.formatter.rows {
+  class freeze <<function>> {
+    + freeze(frozen: list[bool], first_row: int, last_row: int) : None
+  }
+  class child_row <<function>> {
+    + child_row(node: Node, child_type: str) : int | None
+  }
+}
+
+!endsub
+
+@enduml

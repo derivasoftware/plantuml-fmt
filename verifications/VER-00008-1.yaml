@@ -1,9 +1,11 @@
 verification:
   id: VER-00008-1
   req_id: REQ-00008-1
-  title: Member spacing test pins visibility, params and types
+  title: "Review of containment: members are realised by their head, attributes, methods and direction"
   description: >
-    Member spacing test pins visibility, params and types
-  method: test
-  test_ids:
-    - tests/integration/test_formatter.py::test_member_spacing_normalizes
+    Verified through its children by review of containment: the member
+    category is realised by its head (REQ-00018-1), attributes (REQ-00017-1),
+    methods (REQ-00011-1) and the opt-in direction (REQ-00012-1), each verified
+    by tests that drive its own unit. The end-to-end member test rides with
+    the pass (VER-00014-1, PUML-100).
+  method: review

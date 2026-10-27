@@ -1,9 +1,14 @@
 verification:
   id: VER-00001-1
   req_id: REQ-00001-1
-  title: Golden test pins the canonical indentation
+  title: Nested blocks over a real tree indent one level each, their edges marked
   description: >
-    Golden test pins the canonical indentation
+    The block tests drive formatter.blocks over a parsed diagram: nested
+    braced blocks indent one level per enclosing block with each closing
+    brace at its parent depth, and every block marks its opening and
+    closing rows. The end-to-end indentation tests ride with the pass
+    (VER-00013-1, PUML-100).
   method: test
   test_ids:
-    - tests/integration/test_formatter.py::test_golden
+    - "tests/integration/formatter/test_blocks.py::test_nested_blocks_indent_one_level_each"
+    - "tests/integration/formatter/test_blocks.py::test_each_block_marks_its_opening_and_closing_rows"

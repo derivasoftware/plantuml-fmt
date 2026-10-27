@@ -1,0 +1,20 @@
+@startuml CL_Frames
+' requirement REQ-00009-1
+
+!startsub Frames
+!includesub ./CL_Rows.puml!Rows
+
+namespace plantuml_fmt.formatter.frames {
+  class indent_frame <<function>> {
+    + indent_frame(node: Node, depth: list[int], closer: str, clauses: tuple[str, ...]) : None
+  }
+  class mark_frame_edges <<function>> {
+    + mark_frame_edges(node: Node, openers: set[int], closers: set[int], closer: str, clauses: tuple[str, ...]) : None
+  }
+}
+
+indent_frame ..> child_row
+mark_frame_edges ..> child_row
+!endsub
+
+@enduml

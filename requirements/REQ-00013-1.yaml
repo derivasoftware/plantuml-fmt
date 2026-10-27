@@ -1,0 +1,14 @@
+requirement:
+  id: REQ-00013-1
+  title: The formatter shall format a document in one pass over its syntax tree
+  description: >
+    The formatter shall format a document in one pass over its syntax tree: one walk records each line's depth, the rows frozen as opaque, the rows whose relation or member it may rewrite and the block and frame edges; then every line is emitted once, re-indented, rewritten when its statement covers it, dropped when it is a blank the policy removes, or passed through byte-identical when frozen.
+  rationale: >
+    The formatter module: the pass (REQ-00014-1) and the layers of canon that plug into it (blocks, frames, opaque, blanks), grouped under one owner that cites the module's aggregate sheet and is verified through its children. The golden test once drove the whole pass from REQ-00001-1, the indentation rule; the walk (PUML-100, BOK-00321-2) gives the pass its own requirement and the layers hang beside it.
+  status: APPROVED
+  implementation_optional: true
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+  tags:
+    - style

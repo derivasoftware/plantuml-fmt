@@ -1,0 +1,17 @@
+@startuml CL_Relations
+' requirement REQ-00007-2
+
+!startsub Relations
+!includesub ./CL_Reading.puml!Reading
+
+namespace plantuml_fmt.rules.relations {
+  class rewrite_relation <<function>> {
+    + rewrite_relation(src: bytes, node: Node) : bytes | None
+  }
+}
+
+rewrite_relation ..> single_line
+rewrite_relation ..> text
+!endsub
+
+@enduml

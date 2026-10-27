@@ -1,13 +1,15 @@
 verification:
   id: VER-00010-1
   req_id: REQ-00010-1
-  title: v2 tests cover run collapse, edge stripping and frozen note bodies
+  title: The blank-line policy collapses runs and drops blanks at block edges
   description: >
-    v2 tests cover run collapse, edge stripping and frozen note bodies
+    The blank tests drive formatter.blanks over a document's rows and its
+    block edges: a run keeps only its first blank, blanks touching an edge
+    go, a single blank between top-level statements stays, frozen rows are
+    never decided.
   method: test
   test_ids:
-    - tests/integration/test_it_v2.py::test_collapses_blank_runs_to_one
-    - tests/integration/test_it_v2.py::test_strips_blanks_at_block_edges
-    - tests/integration/test_it_v2.py::test_strips_blanks_at_frame_edges
-    - tests/integration/test_it_v2.py::test_keeps_single_blank_between_top_level_statements
-    - tests/integration/test_it_v2.py::test_note_bodies_keep_their_blank_lines
+    - "tests/integration/formatter/test_blanks.py::test_a_run_of_blanks_keeps_only_its_first"
+    - "tests/integration/formatter/test_blanks.py::test_blanks_touching_a_block_edge_go"
+    - "tests/integration/formatter/test_blanks.py::test_a_single_blank_between_top_level_statements_stays"
+    - "tests/integration/formatter/test_blanks.py::test_frozen_blank_rows_are_never_decided"

@@ -1,0 +1,13 @@
+constraint:
+  id: CST-00002-1
+  bok_ids:
+    - BOK-00262-1
+  title: Every rewrite shall leave as written a statement it cannot rebuild faithfully
+  description: >
+    A rewrite rebuilds only a single-line statement whose node it can read whole; a multi-line span, a free-text payload or a line the grammar leaves raw returns nothing, and the pass keeps that line's own spacing.
+  rationale: >
+    It holds for every instance of the intra-line category, so it governs the rule requirements instead of owning a unit; it is how the rewrites keep BOK-00262-1's promise that the formatter never touches bytes it cannot parse.
+  status: APPROVED
+  asil: QM
+  tags:
+    - rewrite

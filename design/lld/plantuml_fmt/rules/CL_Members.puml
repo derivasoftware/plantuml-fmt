@@ -1,0 +1,21 @@
+@startuml CL_Members
+' requirement REQ-00018-1
+
+!startsub Members
+!includesub ./CL_Attributes.puml!Attributes
+!includesub ./CL_Methods.puml!Methods
+!includesub ./CL_Reading.puml!Reading
+
+namespace plantuml_fmt.rules.members {
+  class rewrite_member <<function>> {
+    + rewrite_member(src: bytes, node: Node, member_style: str) : bytes | None
+  }
+}
+
+rewrite_member ..> rewrite_attribute
+rewrite_member ..> rewrite_method
+rewrite_member ..> single_line
+rewrite_member ..> text
+!endsub
+
+@enduml

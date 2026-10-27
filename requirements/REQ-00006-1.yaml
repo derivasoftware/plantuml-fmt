@@ -6,6 +6,7 @@ requirement:
   rationale: >
     A .pre-commit-hooks.yaml at the root wired to the console script is the primary distribution channel.
   status: APPROVED
+  design_optional: true
   asil: QM
   parent_ids:
     - SREQ-00006-1

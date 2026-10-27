@@ -1,0 +1,13 @@
+requirement:
+  id: REQ-00016-1
+  title: The rewrites shall read every document through one grammar instance and read nodes back from their source
+  description: >
+    The rewrites shall read every document through one grammar instance, built once and shared by the pass and the direction guard, and read a node back from its source: its bytes, and whether it fits on one line.
+  rationale: >
+    rules/parser.py and rules/nodes.py: the shared reading every rewrite and the pass stand on (BOK-00321-2 walk, PUML-100).
+  status: APPROVED
+  asil: QM
+  parent_ids:
+    - REQ-00015-1
+  tags:
+    - style

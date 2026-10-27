@@ -1,0 +1,12 @@
+@startuml CL_MemberRules
+' requirement REQ-00008-1
+
+!startsub MemberRules
+!includesub ./CL_Members.puml!Members
+!includesub ./CL_Attributes.puml!Attributes
+!includesub ./CL_Methods.puml!Methods
+!includesub ./CL_Signature.puml!Signature
+!includesub ./CL_Direction.puml!Direction
+!endsub
+
+@enduml

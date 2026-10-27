@@ -1,0 +1,19 @@
+@startuml CL_Methods
+' requirement REQ-00011-1
+
+!startsub Methods
+!includesub ./CL_Direction.puml!Direction
+!includesub ./CL_Signature.puml!Signature
+
+namespace plantuml_fmt.rules.methods {
+  class rewrite_method <<function>> {
+    + rewrite_method(src: bytes, node: Node, member_style: str) : bytes | None
+  }
+}
+
+rewrite_method ..> convert
+rewrite_method ..> emit_method
+rewrite_method ..> method_signature
+!endsub
+
+@enduml

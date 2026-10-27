@@ -1,0 +1,20 @@
+@startuml CL_Blanks
+' requirement REQ-00010-1
+
+!startsub Blanks
+
+namespace plantuml_fmt.formatter.blanks {
+  class keep_blank <<function>> {
+    + keep_blank(row: int, lines: list[bytes], frozen: list[bool], openers: set[int], closers: set[int]) : bool
+  }
+  class is_soft_blank <<function>> {
+    + is_soft_blank(lines: list[bytes], frozen: list[bool], row: int) : bool
+  }
+  class neighbor <<function>> {
+    + neighbor(row: int, step: int, lines: list[bytes], frozen: list[bool]) : int
+  }
+}
+
+!endsub
+
+@enduml

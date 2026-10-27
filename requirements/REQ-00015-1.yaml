@@ -1,0 +1,14 @@
+requirement:
+  id: REQ-00015-1
+  title: The formatter shall rebuild a statement's line from its syntax tree with canonical spacing
+  description: >
+    The formatter shall rebuild a statement's line from its syntax tree with canonical spacing: a relation or a member is re-emitted from its node's children with canonical whitespace between them, read through one grammar instance; every rewrite of the category is whitespace-only (CST-00001-1) and leaves a statement it cannot rebuild faithfully as written (CST-00002-1).
+  rationale: >
+    The rules module: the intra-line category of canon, refined into relations and members, members into their head, attributes, methods and the opt-in direction (BOK-00321-2 walk, PUML-100; shaped like the DriftSpec language DAG: a category, then one requirement per characteristic with its own unit, the rules that hold for every instance as constraints).
+  status: APPROVED
+  implementation_optional: true
+  asil: QM
+  parent_ids:
+    - SREQ-00001-1
+  tags:
+    - style

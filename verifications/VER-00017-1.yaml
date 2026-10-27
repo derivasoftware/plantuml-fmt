@@ -1,0 +1,12 @@
+verification:
+  id: VER-00017-1
+  req_id: REQ-00017-1
+  title: Attributes rebuilt directly over a parsed class body
+  description: >
+    The attribute tests drive rules.attributes: name and type get a canonical colon, an untyped attribute is its name, a free-text member is not rebuilt.
+  method: test
+  test_ids:
+    - tests/integration/rules/test_attributes.py::test_name_and_type_get_a_canonical_colon
+    - tests/integration/rules/test_attributes.py::test_an_untyped_attribute_is_its_name
+    - tests/integration/rules/test_attributes.py::test_a_free_text_member_is_not_rebuilt
+  status: APPROVED

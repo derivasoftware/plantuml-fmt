@@ -1,11 +1,14 @@
 verification:
   id: VER-00004-1
   req_id: REQ-00004-1
-  title: Opaque-content tests assert byte-identical bodies
+  title: Opaque bodies over a real tree are frozen, their edges are not
   description: >
-    Opaque-content tests assert byte-identical bodies
+    The opaque tests drive formatter.opaque over parsed notes, block
+    comments and ref blocks: the body rows are frozen, the edge rows and
+    ordinary statements are not.
   method: test
   test_ids:
-    - tests/integration/test_formatter.py::test_note_body_untouched
-    - tests/integration/test_formatter.py::test_raw_block_body_untouched
-    - tests/integration/test_formatter.py::test_block_comment_continuation_untouched
+    - "tests/integration/formatter/test_opaque.py::test_a_note_body_is_frozen_between_its_edges"
+    - "tests/integration/formatter/test_opaque.py::test_block_comment_continuations_are_frozen"
+    - "tests/integration/formatter/test_opaque.py::test_a_ref_body_is_frozen"
+    - "tests/integration/formatter/test_opaque.py::test_ordinary_statements_are_not"

@@ -1,0 +1,8 @@
+verification:
+  id: VER-00015-1
+  req_id: REQ-00015-1
+  title: "Review of containment: the rules module is realised by its leaves"
+  description: >
+    Verified through its children by review of containment: every unit of plantuml_fmt.rules is owned by exactly one leaf (reading REQ-00016-1, relations REQ-00007-2; members through REQ-00008-1: head REQ-00018-1, attributes REQ-00017-1, methods REQ-00011-1, direction REQ-00012-1), each verified by tests that drive its own unit.
+  method: review
+  status: APPROVED

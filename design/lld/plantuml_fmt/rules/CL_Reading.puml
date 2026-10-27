@@ -1,0 +1,20 @@
+@startuml CL_Reading
+' requirement REQ-00016-1
+
+!startsub Reading
+
+namespace plantuml_fmt.rules.reading {
+  class get_parser <<function>> {
+    + get_parser() : Parser
+  }
+  class single_line <<function>> {
+    + single_line(node: Node) : bool
+  }
+  class text <<function>> {
+    + text(src: bytes, node: Node) : bytes
+  }
+}
+
+!endsub
+
+@enduml

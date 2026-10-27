@@ -1,0 +1,22 @@
+@startuml CL_Signature
+' requirement REQ-00011-1
+
+!startsub Signature
+!includesub ./CL_Reading.puml!Reading
+
+namespace plantuml_fmt.rules.signature {
+  class method_signature <<function>> {
+    + method_signature(src: bytes, node: Node) : dict | None
+  }
+  class emit_method <<function>> {
+    + emit_method(sig: dict) : bytes
+  }
+  class signature_key <<function>> {
+    + signature_key(sig: dict) : tuple
+  }
+}
+
+method_signature ..> text
+!endsub
+
+@enduml

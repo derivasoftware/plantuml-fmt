@@ -1,0 +1,13 @@
+@startuml CL_Formatter
+' requirement REQ-00013-1
+
+!startsub FormatterModule
+!includesub ./CL_Format.puml!Format
+!includesub ./CL_Rows.puml!Rows
+!includesub ./CL_Blocks.puml!Blocks
+!includesub ./CL_Frames.puml!Frames
+!includesub ./CL_Opaque.puml!Opaque
+!includesub ./CL_Blanks.puml!Blanks
+!endsub
+
+@enduml

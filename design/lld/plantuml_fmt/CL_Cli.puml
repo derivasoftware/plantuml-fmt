@@ -1,9 +1,8 @@
 @startuml CL_Cli
 ' requirement REQ-00005-1
-' requirement REQ-00006-1
 
 !startsub CliModule
-!includesub ./CL_Formatter.puml!FormatterModule
+!includesub ./formatter/CL_Format.puml!Format
 
 namespace plantuml_fmt.cli {
   class iter_files <<function>> {

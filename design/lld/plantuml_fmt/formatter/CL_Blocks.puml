@@ -1,0 +1,20 @@
+@startuml CL_Blocks
+' requirement REQ-00001-1
+
+!startsub Blocks
+!includesub ./CL_Rows.puml!Rows
+
+namespace plantuml_fmt.formatter.blocks {
+  class indent_block <<function>> {
+    + indent_block(node: Node, depth: list[int]) : None
+  }
+  class mark_block_edges <<function>> {
+    + mark_block_edges(node: Node, openers: set[int], closers: set[int]) : None
+  }
+}
+
+indent_block ..> child_row
+mark_block_edges ..> child_row
+!endsub
+
+@enduml

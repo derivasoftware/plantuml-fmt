@@ -1,0 +1,22 @@
+@startuml CL_Opaque
+' requirement REQ-00004-1
+
+!startsub Opaque
+!includesub ./CL_Rows.puml!Rows
+
+namespace plantuml_fmt.formatter.opaque {
+  class freeze_opaque <<function>> {
+    + freeze_opaque(node: Node, kind: str, frozen: list[bool]) : None
+  }
+  class freeze_reference_body <<function>> {
+    + freeze_reference_body(node: Node, closer: str, frozen: list[bool]) : None
+  }
+}
+
+freeze_opaque ..> child_row
+freeze_opaque ..> freeze
+freeze_reference_body ..> child_row
+freeze_reference_body ..> freeze
+!endsub
+
+@enduml

@@ -1,0 +1,13 @@
+verification:
+  id: VER-00018-1
+  req_id: REQ-00018-1
+  title: "Members rebuilt directly: head, dispatch and the default direction"
+  description: >
+    The member tests drive rules.members: visibility and modifiers lead with single spaces; attributes are never converted and prose members pass through under every style; the default style keeps a method's written direction.
+  method: test
+  test_ids:
+    - tests/integration/rules/test_members.py::test_visibility_and_modifiers_lead_with_single_spaces
+    - tests/integration/rules/test_members.py::test_attributes_are_never_converted
+    - tests/integration/rules/test_members.py::test_prose_members_pass_through
+    - tests/integration/rules/test_members.py::test_the_default_style_keeps_the_written_direction
+  status: APPROVED

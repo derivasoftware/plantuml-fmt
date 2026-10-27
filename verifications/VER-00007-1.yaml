@@ -1,12 +1,15 @@
 verification:
   id: VER-00007-1
   req_id: REQ-00007-2
-  title: Relation spacing test pins the canonical form
+  title: "Relations rebuilt directly over parsed statements"
   description: >
-    Relation spacing test pins the canonical form
+    The relation tests drive rules.relations: spacing collapses and the label
+    gets its canonical colon, a role stays glued to its cardinality,
+    activation shorthand keeps its tokens and boundary messages normalize.
+    The end-to-end relation tests ride with the pass (VER-00014-1, PUML-100).
   method: test
   test_ids:
-    - tests/integration/test_formatter.py::test_relation_spacing_normalizes
-    - tests/integration/test_it_v2.py::test_role_slash_cardinalities_stay_glued
-    - tests/integration/test_it_v2.py::test_activation_shorthand_spacing
-    - tests/integration/test_it_v2.py::test_boundary_messages_normalize
+    - "tests/integration/rules/test_relations.py::test_spacing_collapses_and_the_label_gets_its_colon"
+    - "tests/integration/rules/test_relations.py::test_a_role_stays_glued_to_its_cardinality"
+    - "tests/integration/rules/test_relations.py::test_activation_shorthand_keeps_its_tokens"
+    - "tests/integration/rules/test_relations.py::test_boundary_messages_normalize"

@@ -2,16 +2,36 @@
 moves a method's type across the name with every other field intact —
 and only when the converted line re-parses to the identical signature.
 Attributes, prose members and unconvertible signatures keep their
-written form; the default remains preserve (REQ-00011-1)."""
+written form; the default remains preserve (REQ-00011-1).
 
-from plantuml_fmt.formatter import format_text
+The tests drive the conversion itself (rules.direction) over a parsed
+method signature: a refused conversion leaves the signature in its written
+direction, re-emitted as the method rewrite would."""
+
+from plantuml_fmt.rules.direction import convert
+from tests.integration._grammar import parse
+from plantuml_fmt.rules.signature import emit_method, method_signature
+
+
+def _convert(line: str, style: str) -> str:
+    src = f"@startuml\nclass C {{\n  {line}\n}}\n@enduml\n".encode()
+    stack = [parse(src).root_node]
+    while stack:
+        node = stack.pop()
+        if node.type == "method":
+            sig = method_signature(src, node)
+            out = convert(sig, style) or emit_method(sig)
+            line_start = src.rfind(b"\n", 0, node.start_byte) + 1
+            head = b" ".join(src[line_start : node.start_byte].split())
+            return ((head + b" ") if head else b"").decode() + out.decode()
+        stack.extend(node.children)
+    raise AssertionError(f"no method in {line!r}")
 
 
 def _member(line: str, style: str) -> str:
-    src = f"@startuml\nclass C {{\n  {line}\n}}\n@enduml\n"
-    out = format_text(src, member_style=style)
-    assert format_text(out, member_style=style) == out, "idempotency"
-    return out.splitlines()[2].strip()
+    out = _convert(line, style)
+    assert _convert(out, style) == out, "idempotency"
+    return out
 
 
 def test_canonical_moves_plain_type_right():
@@ -56,24 +76,7 @@ def test_untyped_method_is_stable_in_both_styles():
     assert _member("+ run()", "cpp") == "+ run()"
 
 
-def test_attributes_are_never_converted():
-    line = "+ m_cb : std::function<void(int)>"
-    assert _member(line, "cpp") == line
-    assert _member(line, "canonical") == line
-
-
-def test_prose_members_pass_through():
-    line = "+ Callable Protocol described in words"
-    assert _member(line, "canonical") == line
-    assert _member(line, "cpp") == line
-
-
 def test_degenerate_dual_type_is_not_converted():
     line = "+ void f() : int"
     assert _member(line, "canonical") == line
     assert _member(line, "cpp") == line
-
-
-def test_default_stays_preserve():
-    src = "@startuml\nclass C {\n  + void start()\n}\n@enduml\n"
-    assert format_text(src) == src
